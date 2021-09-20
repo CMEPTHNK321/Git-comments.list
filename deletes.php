@@ -39,7 +39,7 @@
             mysqli_query($link, $str_sql_query6);
         }
 
-
+  echo "Задача выполнена";
         // закрытие соединения с сервером базы данных
         mysqli_close($link);
         ?>
