@@ -14,6 +14,11 @@
            $name = $_POST["name"];
         $text = $_POST["text"];
          include "db_connect.php";
+         
+        //пишем запрос
+         $str_sql_query1 = "INSERT INTO $tblName (name, text) VALUES ('$name', '$text')";
+         
+         //выполняем запрос от пользователя
        if (!empty($name)) {
             if (!empty($text)) {
                 if (!mysqli_query($link, $str_sql_query1)) {
@@ -28,7 +33,9 @@
         }
         
         
-// выполнение запроса
+// выполнение запроса на вывод всех комментариев
+        $str_sql_query4 = "SELECT * FROM $tblName";
+        
         if (!$result = mysqli_query($link, $str_sql_query4)) {
             echo "<br>He могу выполнить запрос<br>";
             exit();
