@@ -60,7 +60,7 @@
         </form>
 
         <?php
-        $name = $_POST["name"];
+        $name = htmlspecialchars($_POST["name"]);
         $text = htmlspecialchars($_POST["text"]);
         include "db_connect.php";
 
