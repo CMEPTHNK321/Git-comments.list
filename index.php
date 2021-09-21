@@ -9,6 +9,7 @@
     <body background="/images/fon.jpg">
 
         <?php
+        error_reporting(0);
         // Определяем переменные и устанавливаем пустые значения
         $name1Err = $text1Err = "";
         $name1 = $text1 = "";
