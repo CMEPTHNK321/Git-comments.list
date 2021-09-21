@@ -9,7 +9,7 @@
     <body background="/images/fon.jpg">
 
         <?php
-        error_reporting(0);
+        error_reporting(0xffff);
         // Определяем переменные и устанавливаем пустые значения
         $name1Err = $text1Err = "";
         $name1 = $text1 = "";
@@ -33,9 +33,8 @@
                 $name1 = test_input($_POST["name"]);
             }
         }
-
         //Проверяем чтоб были только Буквы и пробелы - без цифри всякой ерунды
-        if (!preg_match("/^[a-zA-Z ]*$/", $name1)) {
+        if (!preg_match("/^[\p{L} ]*$/", $name1)) {
             $name1Err = "Только буквы и пробелы допустимы в имени";
         }
 
@@ -53,33 +52,41 @@
         <p><font size=+2>Оставьте ваш комментарий</font></p>
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
             Имя:<input type="Text" name="name" size="20" placeholder="Ваше имя" maxlength="30" minlength="5" value="<?php echo $name1; ?>"> 
-            <span class="error">* <?php echo $name1Err; ?></span><br><br>
+            <span class="error">* <?php if (!empty($name1Err)) echo $name1Err; ?></span><br><br>
             <textarea type="Text" name="text" rows="10" cols="70" placeholder="Ваш комментарий" maxlength="750" minlength="10" <?php echo $text1; ?>></textarea>
             <span class="error">* <?php echo $text1Err; ?></span><br><br>
             <input type="Submit" value="Отправить!">
         </form>
 
         <?php
-        $name = htmlspecialchars($_POST["name"]);
-        $text = htmlspecialchars($_POST["text"]);
+        
+        $name = isset($_POST['name']) ? htmlspecialchars($_POST['name']) : '';
+        
+        $name = $_POST['name'] ?? '';
+        $text = $_POST['text'] ?? '';
+        $name = htmlspecialchars($name);
+        $text = htmlspecialchars($text);
         include "db_connect.php";
+        if (empty($name1Err) and !empty($name) and !empty($text)) {
+            
+            
 
 //пишем запрос
-        $str_sql_query1 = "INSERT INTO $tblName (name, text) VALUES ('$name', '$text')";
+            $str_sql_query1 = "INSERT INTO $tblName (name, text) VALUES ('$name', '$text')";
 
 //выполняем запрос от пользователя
-        if (!empty($name)) {
-            if (!empty($text)) {
-                if (!mysqli_query($link, $str_sql_query1)) {
-                    echo "<br>He могу выполнить запрос на запись<br>";
+            if (!empty($name)) {
+                if (!empty($text)) {
+                    if (!mysqli_query($link, $str_sql_query1)) {
+                        echo "<br>He могу выполнить запрос на запись<br>";
+                    } else {
+                        echo "<br>Запись добавлена успешно<br>";
+                    }
                 } else {
-                    echo "<br>Запись добавлена успешно<br>";
+                    echo "Заполните поле комментария";
                 }
-            } else {
-                echo "Заполните поле комментария";
             }
         }
-
 
 // выполнение запроса на вывод всех комментариев
         $str_sql_query4 = "SELECT * FROM $tblName";
