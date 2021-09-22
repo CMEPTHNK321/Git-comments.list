@@ -34,16 +34,11 @@
             }
         }
 
-          //Проверяем чтоб были только Буквы и пробелы - без цифри всякой ерунды
+        //Проверяем чтоб были только Буквы и пробелы - без цифри всякой ерунды
         if (!preg_match("/^[\p{L} ]*$/u", $name1)) {
             $name1Err = "Только буквы и пробелы допустимы в имени";
         }
-        
-        if ($name1 != '' and strlen($name1) < 5) {
-            $name1Err = "Имя должно быть не менее 5ти символов";
-        }
 
-      
 
         If ($_SERVER["REQUEST_METHOD"] == "POST") {
             if (empty($_POST["text"])) {
@@ -53,9 +48,6 @@
             }
         }
 
-        if ($text1 != '' and strlen($text1) < 10) {
-            $text1Err = "Комментарий должен быть не менее 10ти символов";
-        }
         ?>
 
         <!-- Оформляем кнопки для взаимодействия с PHP -->
@@ -64,16 +56,16 @@
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
             Имя:<input type="Text" name="name" size="20" placeholder="Ваше имя" maxlength="30" minlength="5" value="<?php echo $name1; ?>"> 
             <span class="error">* <?php
-        if (!empty($name1Err)) {
-            echo $name1Err;
-        }
-        ?></span><br><br>
+                if (!empty($name1Err)) {
+                    echo $name1Err;
+                }
+                ?></span><br><br>
             <textarea type="Text" name="text" rows="10" cols="70" placeholder="Ваш комментарий" maxlength="750" minlength="10" value="<?php echo $text1; ?>"><?php echo $text1; ?></textarea>
             <span class="error">* <?php
                 if (!empty($text1Err)) {
                     echo $text1Err;
                 }
-        ?></span><br><br>
+                ?></span><br><br>
             <input type="Submit" value="Отправить!">
         </form>
 
