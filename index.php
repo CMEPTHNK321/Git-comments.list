@@ -19,14 +19,16 @@ include "client_request.php";
             }
         </style>
     </head>
-    <body background="/images/fon.jpg" background-attachment="fixed">
+    <body background="/images/fon.jpg" ">
 
         <!-- Оформляем кнопки для взаимодействия с PHP -->
 
         <p><font size=+2>Оставьте ваш комментарий</font></p>
         <form action="<?php echo htmlentities($_SERVER["PHP_SELF"]); ?>" method="post">
-            Имя:<input type="Text" name="Name" size="20" placeholder="Ваше имя" minlength="5" maxlength="30" value="<?php
-            echo isset($name)
+            Имя:<input type="Text" name="name" size="20" placeholder="Ваше имя" minlength="5" maxlength="30" value="<?php
+            if (isset($_POST["name"])) {
+                echo $name;
+            }
             ?>"> 
             <span class="error">* <?php
                 if (!empty($nameErr)) {
@@ -34,8 +36,8 @@ include "client_request.php";
                 }
                 ?></span><br><br>
             <textarea type="Text" name="text" rows="10" cols="70" placeholder="Ваш комментарий" minlength="10" maxlength="750" value="<?php
-            if ($errFlag == False) {
-                echo isset($text);
+            if (!empty($errFlag) and $errFlag == FALSE) {
+                echo $text;
             }
             ?>"></textarea>
             <span class="error">* <?php
