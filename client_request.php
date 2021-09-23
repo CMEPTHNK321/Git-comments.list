@@ -71,7 +71,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (!mysqli_query($link, $str_sql_query1)) {
             echo "<br><font color=\"#ff0000\">HЕ МОГУ СОЗДАТЬ КОММЕНТАРИЙ!!!</font><br>";
         } else {
-            echo "<br><font color=\"#ffffff\" size=\"+3\" >Запись добавлена успешно!</font><br>";
+            echo "<br><font color=\"#ff00ff\" size=\"+3\" >Запись добавлена успешно!</font><br>";
         }
     }
 }
