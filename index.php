@@ -1,6 +1,8 @@
 <?php
 error_reporting(0xffff);
 
+setcookies("name","$name", time()+60*60*24*60);
+
 //Подключаемся к базе данных 
 
 include "db_connect.php";
@@ -36,7 +38,7 @@ include "client_request.php";
                 }
                 ?></span><br><br>
             <textarea type="Text" name="text" rows="10" cols="70" placeholder="Ваш комментарий" minlength="10" maxlength="750" value="<?php
-            if (!empty($errFlag) and $errFlag == FALSE) {
+            if (isset($_POST["text"])) {
                 echo $text;
             }
             ?>"></textarea>

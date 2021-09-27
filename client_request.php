@@ -18,14 +18,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     //Проверяем,чтоб переменная $name не была слишком короткой 
     //Вводим переменную ошибки $nameErr
 
-    if (strlen($name) < 5) {
+    if (mb_strlen($name) < 5) {
         $errFlag = false;
         $nameErr = "Длина имени должна быть не менее 5ти символов";
     }
 
     //Проверяем, чтоб переменная $name не была слишком длинной
 
-    if (strlen($name) > 30) {
+    if (mb_strlen($name) > 30) {
         $errFlag = false;
         $nameErr = "Длина имени должна быть менее 30ти символов";
     }
@@ -46,14 +46,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     //Проверяем,чтоб переменная $text не была слишком короткой 
     //Вводим переменную ошибки $textErr
 
-    if (strlen($text) < 10) {
+    if (mb_strlen($text) < 10) {
         $errFlag = false;
         $textErr = "Длина комментария должна быть не менее 10ти символов";
     }
 
     //Проверяем, чтоб переменная $text не была слишком длинной
 
-    if (strlen($text) > 750) {
+    if (mb_strlen($text) > 750) {
         $errFlag = false;
         $textErr = "Длина комментария должна быть менее 750ти символов";
     }
