@@ -1,19 +1,39 @@
 <?php
+//СОЗДАЕМ ПЕРЕМЕННЫЕ КОТОРЫЕ МОГУТ ПОНАДОБИТСЯ
+//Создаем переменную значения $valueCookie для куки
+$valueCookie = isset($_COOKIE["name"]) ? htmlentities($_COOKIE["name"]) : '';
+
+//Создаем переменную для вывода имени в поле name $savedName
+$savedName = $valueCookie;
+
+//Создаем переменную для ввода текста в поле text $savedText
+$savedText = '';
+
+//Вводим универсальную переменную ошибки $errFlag
+$errFlag = true;
+
+//Создаем перменную вывода названия ошибки поля name $nameErr
+$nameErr = true;
+
+//Создаем перменную ошибки поля text $textErr
+$textErr = true;
+
+//Создаем перменную вывода сообщения о создании комментария $createComment
+$createComment = true;
 
 //Проверяем метод запроса к серверу
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-
-    //Вводим универсальную переменную ошибки $errFlag
-
-    $errFlag = true;
 
     //РАБОТАЕМ С ПЕРЕМЕННОЙ $name
     //Проверяем, существуют ли  данные для переменной $name 
     //Если существуют, то создаем переменную $name и экранируем её 
-
     $name = isset($_POST["name"]) ? htmlentities($_POST["name"]) : '';
+
+    //Если в поле ввода имени чтото появилось, мы хоти чтоб это оставалось и дальше,
+    //поетому присваиваем переменной $savedName новое значение введенное в поле имени, даже если оно не соответсвует требованиям
+
+    $savedName = $name;
 
     //Проверяем,чтоб переменная $name не была слишком короткой 
     //Вводим переменную ошибки $nameErr
@@ -35,6 +55,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (!preg_match("/^[\p{L} ]*$/u", $name)) {
         $errFlag = false;
         $nameErr = "Только буквы и пробелы допустимы в имени";
+    }
+
+    //Меняем значение переменной $valueCookie, если имя изменилось в соответствии с требованиями
+
+    if ($errFlag === true) {
+        $valueCookie = $name;
     }
 
     //РАБОТАЕМ С ПЕРЕМЕННОЙ $text
@@ -69,10 +95,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         //Выполняем запрос на создание комментария (создаем запись в базе данных)
 
         if (!mysqli_query($link, $str_sql_query1)) {
-            echo "<br><font color=\"#ff0000\">HЕ МОГУ СОЗДАТЬ КОММЕНТАРИЙ!!!</font><br>";
+            $createComment = "<br><font color=\"#ff0000\">HЕ МОГУ СОЗДАТЬ КОММЕНТАРИЙ!!!</font><br>";
         } else {
-            echo "<br><font color=\"#ff00ff\" size=\"+3\" >Запись добавлена успешно!</font><br>";
+            $createComment = "<br><font color=\"#ff00ff\" size=\"+3\" >Запись добавлена успешно!</font><br>";
         }
     }
 }
-?>
+
+//Создаем переменную которая будет оставлять текст, если были допущены ошибки в заполнении полей
+
+if (!$errFlag === true) {
+    $savedText = $text;
+}
