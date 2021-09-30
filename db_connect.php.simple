@@ -1,19 +1,19 @@
-        <?php
-        $sdb_name = "сервер БД";
-        $user_name = "имя";
-        $user_password = "пароль";
-        $db_name = "имя БД";
-        $tblName = "имя таблицы";
-        
-// соединение с сервером базы данных
-        if (!$link = mysqli_connect($sdb_name, $user_name, $user_password)) {
-            echo "<br>He могу соединиться с сервером базы данных <br>";
-            exit();
-        }
-        echo "<br>Соединение с сервером базы данных  установлено успешно<br>";
+ <?php
+ //Создаем переменные для подключения
+    $sdb_name = "сервер БД";
+    $user_name = "имя";
+    $user_password = "пароль";
+    $db_name = "имя БД";
+    $tblName = "имя таблицы";
+ // соединение с сервером базы данных
+if (!$link = mysqli_connect($sdb_name, $user_name, $user_password)) {
+    $sbdConnect = "<br>He могу соединиться с сервером базы данных <br>";
+} else {
+    $sbdConnect = "<br>Соединение с сервером базы данных  установлено успешно<br>";
+}
 // выбираем базу данных
-        if (!mysqli_select_db($link, $db_name)) {
-            echo "<br>He могу выбрать базу данных e<br>";
-            exit();
-        }
-        echo "<br>Выбрана база данных <br>";
+if (!mysqli_select_db($link, $db_name)) {
+    $bdConnect = "<br>He могу выбрать базу данных<br>";
+} else {
+    $bdConnect = "<br>Выбрана база данных <br>";
+}

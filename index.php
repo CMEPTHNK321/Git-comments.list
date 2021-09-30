@@ -2,11 +2,9 @@
 error_reporting(0xffff);
 
 //Подключаемся к базе данных 
-
 include "db_connect.php";
 
 //Обрабатываем запросы клиентов на отправку комментариев
-
 include "client_request_process.php";
 
 setcookie("name", $valueCookie, time() + 60 * 60 * 24 * 60);
@@ -14,6 +12,7 @@ setcookie("name", $valueCookie, time() + 60 * 60 * 24 * 60);
 <html>
     <head>
         <meta charset="UTF-8">
+        <link type="Image/x-icon" href="/images/favicon.jpg" rel="icon">
         <title>Лист Комментариев</title>
         <style>
             .error {color: #ff0000;}
@@ -21,14 +20,12 @@ setcookie("name", $valueCookie, time() + 60 * 60 * 24 * 60);
             }
         </style>
     </head>
-    <body background="/images/fon.jpg" ">
+    <body background="/images/fon.jpg">
         <?php
 // Выводим сообщение установлено ли соединение с сервером БД или нет
-
         echo $sbdConnect;
 
 //Выводим сообщение установлено ли соединение с БД или нет
-
         echo $bdConnect
         ?>  
 
@@ -42,7 +39,7 @@ setcookie("name", $valueCookie, time() + 60 * 60 * 24 * 60);
                     echo $nameErr;
                 }
                 ?></span><br><br>
-            <textarea type="Text" name="text" rows="10" cols="70" placeholder="Ваш комментарий" minlength="10" maxlength="750" value="<?php echo $savedText; ?>"></textarea>
+            <textarea type="Text" name="text" rows="10" cols="70" placeholder="Ваш комментарий" minlength="10" maxlength="750"><?php echo $savedText; ?> </textarea>
             <span class="error">* <?php
                 if ($textErr !== true) {
                     echo $textErr;
