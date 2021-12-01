@@ -1,0 +1,103 @@
+/*Задаем стиль body*/
+body {
+    background-color: lightblue;
+    background-image: url("/images/fon.jpg");
+    background-attachment: fixed;
+    background-position-x: right;
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-size: 100%;
+    margin: 0;
+}
+
+/*Задаем стиль для все <p>*/
+p {
+    padding: 0;
+    margin: 0;
+}
+
+/*Задаем стиль для <div> в <body>*/
+.body_wrap {
+    width: 100%;
+    margin: 0 auto;
+    padding: 15px;
+    /*background: rgba(255, 214, 219, 0.5);*/
+}
+
+/*Задаем стиль ошибки при вводе имени и текста пользователем*/
+.error {
+    color: #ff0000;
+}
+
+/*Обертываем весь вывод одного полного комментария*/
+.one_single_comment {
+    position: relative;
+    width: 100%;
+    margin: 15px 0;
+}
+
+/*Обертываем время  и пользрвателя*/
+.date_time {
+    padding-bottom: 5px;
+}
+
+/*Задаем стиль слова Пользователь комментариев в конце*/
+.polzovatel {
+    font-weight: bold;
+    padding-left: 10px;
+    padding-right: 3px;
+}
+
+/*Обертываем комментарии и текст*/
+.text_wrap {
+    position: relative;
+    width: 100%;
+    float: none;
+}
+
+/*Задаем .clearfix для .text_wrap*/
+.clearfix {
+    overflow: auto;
+}
+
+/*Задаем стиль слова Комментарии в конце*/ 
+.comments {
+    float: left;
+    width: 17%;
+    text-align: right;
+    padding-right: 5px;
+    font-family: "Times New Roman", Times, serif;
+    font-style: italic;
+    text-decoration: underline;
+}
+
+/*Задаем стиль вывода текста комментариве в конце*/
+.textes {
+    float: left;
+    width: 50%;
+    border: 1px solid green;
+    background-color: yellow;
+}
+
+/*Задаем стиль для <form> Чтоб оставалось всегдана экране*/
+/*.form{
+    opacity: 1;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    padding: 5px;
+}*/
+
+.message_output {
+    color: #0000ff;
+}
+
+.message_err {
+    color: red;
+}
+
+/*Задаем универсальный стиль отступа сверху и снизу*/
+.probel {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}

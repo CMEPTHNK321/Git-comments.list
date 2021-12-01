@@ -2,10 +2,10 @@
 
 //СОЗДАЕМ ПЕРЕМЕННЫЕ КОТОРЫЕ МОГУТ ПОНАДОБИТСЯ
 //Создаем переменную значения $valueCookie для куки
-$valueCookie = isset($_COOKIE["name"]) ? htmlentities($_COOKIE["name"]) : '';
+$cookieNameClient = isset($_COOKIE["name"]) ? htmlentities($_COOKIE["name"]) : '';
 
 //Создаем переменную для вывода имени в поле name $savedName
-$savedName = $valueCookie;
+$savedName = $cookieNameClient;
 
 //Создаем переменную для ввода текста в поле text $savedText
 $savedText = '';
@@ -61,7 +61,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     //Меняем значение переменной $valueCookie, если имя изменилось в соответствии с требованиями
 
     if ($errFlag === true) {
-        $valueCookie = $name;
+        $cookieNameClient = $name;
     }
 
     //РАБОТАЕМ С ПЕРЕМЕННОЙ $text
