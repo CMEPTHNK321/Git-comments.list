@@ -6,14 +6,14 @@
     $db_name = "имя БД";
     $tblName = "имя таблицы";
  // соединение с сервером базы данных
-if (!$link = mysqli_connect($sdb_name, $user_name, $user_password)) {
-    $sbdConnect = "<br>He могу соединиться с сервером базы данных <br>";
+f (!$link = mysqli_connect($sdb_name, $user_name, $user_password)) {
+    $sbdConnect = "<p class='message_err'>He могу соединиться с сервером базы данных <p>";
 } else {
-    $sbdConnect = "<br>Соединение с сервером базы данных  установлено успешно<br>";
+    $sbdConnect = "<p>Соединение с сервером базы данных  установлено успешно</p>";
 }
 // выбираем базу данных
 if (!mysqli_select_db($link, $db_name)) {
-    $bdConnect = "<br>He могу выбрать базу данных<br>";
+    $bdConnect = "<p class='message_err'>He могу выбрать базу данных<>";
 } else {
-    $bdConnect = "<br>Выбрана база данных <br>";
+    $bdConnect = "<p>Выбрана база данных <p>";
 }
