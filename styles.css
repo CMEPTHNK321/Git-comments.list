@@ -18,8 +18,8 @@ p {
 
 /*Задаем стиль для <div> в <body>*/
 .body_wrap {
-    width: 100%;
-    margin: 0 auto;
+    width: 70%;
+    margin: auto;
     padding: 15px;
     /*background: rgba(255, 214, 219, 0.5);*/
 }
@@ -63,8 +63,7 @@ p {
 /*Задаем стиль слова Комментарии в конце*/ 
 .comments {
     float: left;
-    width: 17%;
-    text-align: right;
+    width: 9%;
     padding-right: 5px;
     font-family: "Times New Roman", Times, serif;
     font-style: italic;
@@ -74,7 +73,7 @@ p {
 /*Задаем стиль вывода текста комментариве в конце*/
 .textes {
     float: left;
-    width: 50%;
+    width: 65%;
     border: 1px solid green;
     background-color: yellow;
 }
