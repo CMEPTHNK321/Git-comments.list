@@ -21,7 +21,12 @@ p {
     width: 70%;
     margin: auto;
     padding: 15px;
-    /*background: rgba(255, 214, 219, 0.5);*/
+    background: inherit;
+}
+
+.chat_welcome {
+    text-align: center;
+    color: blue;
 }
 
 /*Задаем стиль ошибки при вводе имени и текста пользователем*/
@@ -34,6 +39,7 @@ p {
     position: relative;
     width: 100%;
     margin: 15px 0;
+    z-index:59;
 }
 
 /*Обертываем время  и пользрвателя*/
@@ -66,16 +72,6 @@ p {
     overflow: auto;
 }
 
-/*Задаем стиль слова Комментарии в конце*/ 
-/*.comments {
-    float: left;
-    width: 9%;
-    padding-right: 5px;
-    font-family: "Times New Roman", Times, serif;
-    font-style: italic;
-    text-decoration: underline;
-}*/
-
 /*Задаем стиль вывода текста комментариве в конце*/
 .textes {
     float: left;
@@ -86,24 +82,17 @@ p {
 }
 
 /*Задаем стиль для <form> Чтоб оставалось всегдана экране*/
-/*.form{
-    opacity: 1;
+.form{
+   width: 100%;
     position: -webkit-sticky;
     position: sticky;
+    bottom: 0;
     top: 0;
+/*    position: absolute;
+    bottom: 0;*/
     padding: 5px;
-}*/
-
-.message_output {
-    color: #0000ff;
-}
-
-.message_err {
-    color: red;
-}
-
-/*Задаем универсальный стиль отступа сверху и снизу*/
-.probel {
-    margin-top: 15px;
-    margin-bottom: 15px;
+    opacity: 1;
+    z-index:99;
+    background: inherit;
+    /*margin-bottom: 20px;*/
 }

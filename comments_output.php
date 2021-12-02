@@ -7,11 +7,12 @@ $str_sql_query4 = "SELECT * FROM $tblName";
 
 //Создаем запрос на вывод из таблицы всех комментариев 
 
-if (!$result = mysqli_query($link, $str_sql_query4)) {
-    echo "<p class='message_err'>НЕ МОГУ ВЫВЕСТИ КОММЕНТАРИИ!!!</p>";
-    exit();
-}
-echo "<p class='message_output'>Вывожу все комментарии</p>";
+$result = mysqli_query($link, $str_sql_query4);
+//        if () {
+//    echo "<p class='message_err'>НЕ МОГУ ВЫВЕСТИ КОММЕНТАРИИ!!!</p>";
+//    exit();
+//}
+//echo "<p class='message_welcome'>ДОБРО ПОЖАЛОВАТЬ В НАШ ЧАТ!!!</p>";
 
 //Выводим результат запроса в браузер, предварительно сортируя их соответсвено нашим условиям
 
