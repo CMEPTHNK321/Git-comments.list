@@ -79,6 +79,7 @@ p {
     border: 1px solid green;
     background-color: yellow;
     border-radius: 5px;
+    overflow: auto;
 }
 
 /*Задаем стиль для <form> Чтоб оставалось всегдана экране*/
