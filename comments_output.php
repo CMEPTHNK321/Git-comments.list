@@ -18,9 +18,8 @@ echo "<p class='message_output'>Вывожу все комментарии</p>";
 while ($row = mysqli_fetch_assoc($result)) {
     if ($row["deleted"] == 0) {
         print ("<div class='one_single_comment'>");
-        print ("<p class='date_time'>" . $row["create_time"]);
-        print ("<span class='polzovatel'>Пользователь:</span>" . $row["name"] . "</p>");
-        print ("<div class='text_wrap clearfix'><p class='comments'>Комментарий:</p><p class='textes'>" . $row['text'] . "</p></div>");
+        print ("<p class='date_time'>" . "<span class='polzovatel'>Пользователь:</span>" . $row["name"] . "<span class='show_time'>{$row['create_time']}</span>" . "</p>");
+        print ("<div class='text_wrap clearfix'><p class='textes'>" . $row['text'] . "</p></div>");
         print ("</div>");
     }
 }

@@ -48,6 +48,12 @@ p {
     padding-right: 3px;
 }
 
+/*Задаем стиль вывода времени*/
+.show_time{
+    float: right;
+    margin-right: 37%;
+}
+
 /*Обертываем комментарии и текст*/
 .text_wrap {
     position: relative;
@@ -61,14 +67,14 @@ p {
 }
 
 /*Задаем стиль слова Комментарии в конце*/ 
-.comments {
+/*.comments {
     float: left;
     width: 9%;
     padding-right: 5px;
     font-family: "Times New Roman", Times, serif;
     font-style: italic;
     text-decoration: underline;
-}
+}*/
 
 /*Задаем стиль вывода текста комментариве в конце*/
 .textes {
@@ -76,6 +82,7 @@ p {
     width: 65%;
     border: 1px solid green;
     background-color: yellow;
+    border-radius: 5px;
 }
 
 /*Задаем стиль для <form> Чтоб оставалось всегдана экране*/
