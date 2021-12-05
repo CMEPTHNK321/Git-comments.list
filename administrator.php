@@ -5,7 +5,7 @@ error_reporting(0xffff);
 include "db_connect.php";
 
 //Обрабатываем запросы клиентов на отправку комментариев
-include "client_request_process.php";
+include "admin_request_process.php";
 
 setcookie("name", $cookieNameClient, time() + 60 * 60 * 24 * 60);
 ?>
@@ -14,24 +14,16 @@ setcookie("name", $cookieNameClient, time() + 60 * 60 * 24 * 60);
         <meta charset="UTF-8">
         <link type="Image/x-icon" href="/images/favicon.jpg" rel="icon">
         <title>Лист Комментариев</title>
-        <link rel="stylesheet" href="styles.css" type="text/css">
+        <link rel="stylesheet" href="admin_styles.css" type="text/css">
     </head>
     <body>
         <div class="body_wrap">
 
             <h2 class="chat_welcome">ДОБРО ПОЖАЛОВАТЬ В НАШ ЧАТ!!!</h2>  
-
-            <!--            <?php
-//// Выводим сообщение установлено ли соединение с сервером БД или нет
-//           echo $sbdConnect;
-//
-////Выводим сообщение установлено ли соединение с БД или нет
-//           echo $bdConnect
-            ?>  -->
-
+            
             <?php
             //Выводим комментарии
-            include "comments_output.php";
+            include "admin_comments_output.php";
             ?>
 
             <?php
@@ -44,7 +36,7 @@ setcookie("name", $cookieNameClient, time() + 60 * 60 * 24 * 60);
             <!-- Оформляем кнопки для взаимодействия с PHP -->
                 <div class="form">
                     <h1>Оставьте ваш комментарий</h1>
-                    <form action="<?php echo htmlentities($_SERVER["PHP_SELF"]); ?>" method="post" >
+                    <form action="<?php echo htmlentities($_SERVER["PHP_SELF"]); ?>" method="post" ">
                         Имя:<input type="Text" name="name" size="20" placeholder="Ваше имя" minlength="5" maxlength="30" value="<?php echo $savedName; ?>" > 
                         <span class="error">* <?php
                             if ($nameErr !== true) {

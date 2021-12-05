@@ -67,6 +67,11 @@ p {
     margin-left: 5px;
 }
 
+.delete_button {
+    margin-right: 50px;
+    float: right;
+}
+
 /*Задаем стиль вывода времени*/
 .show_time{
     float: right;
