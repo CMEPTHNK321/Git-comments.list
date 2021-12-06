@@ -10,9 +10,11 @@
 //Вводим универсальную переменную ошибки $errFlag
 $errFlag = true;
 
-$adminName="Maxym";
+$adminName = "Maxym";
 
-$adminParol="12345678";
+$adminParol = "12345678";
+
+$adminLoginError= "Введите логин и пароль";
 
 //Создаем перменную вывода названия ошибки поля name $nameErr
 $nickNameErr = true;
@@ -81,11 +83,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $parolErr = "Длина пароля должна быть менее 16ти символов";
     }
 
-    if ($errFlag == true AND $nickName == $adminName AND $parol == $adminParol) {
-        echo "<h3 style='text-align: center'><a href='administrator.php'> Нажмите для перехода на страницу администратора</a></h3>";
-        //<a href="authorization.php">Авторизация</a>
+    if ($errFlag == false) {
+        $adminLoginError =  "Неверный логин или пароль";
     }
+        if ($errFlag == true AND $nickName == $adminName AND $parol == $adminParol) {
 
+            header("Location: administrator.php");
+            //  echo "<h3 style='text-align: center'><a href='administrator.php'> Нажмите для перехода на страницу администратора</a></h3>";
+            //<a href="authorization.php">Авторизация</a>
+        }else {
+            header("Location: admin_authorization.php");
+        }
+
+        
 //    if ($errFlag == true) {
 //
 //    //Создаем переменную запроса для базы данных на создание комментария

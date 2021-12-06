@@ -33,7 +33,7 @@ while ($row = mysqli_fetch_assoc($result)) {
         }
 
         ?>
-        <form action="<?php echo htmlentities($_SERVER["PHP_SELF"]); ?>" method="post" >
+        <form action="admin_delete_comment.php" method="post" >
             <div class='one_single_comment'>
                 <p class='date_time'>
                     <span class='polzovatel'>Пользователь:</span>
@@ -41,8 +41,9 @@ while ($row = mysqli_fetch_assoc($result)) {
                     <span class='show_time' style="color:<?= $commentDateColor ?>"><?= date("Y M d H:i", $commentUnixTime) ?></span>
                     <span class='write'>написал</span>
                     <span class="delete_button">
-                        <input type="text" name="that" value = "<?= $id ?>"> 
+                        <input type="text" name="that" value = "<?= $id ?>">
                         <input type="submit" value="Удалить">
+                        <!--<input type="submit" name="that" value="<?= $id ?>"><span><<Удалить комментраий</span>-->
                     </span></p>
                 <div class='text_wrap clearfix'>
                     <p class='textes'><?= $row['text'] ?></p>

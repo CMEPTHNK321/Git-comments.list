@@ -20,6 +20,8 @@ setcookie("name", $cookieNameClient, time() + 60 * 60 * 24 * 60);
         <div class="body_wrap">
 
             <h2 class="chat_welcome">ДОБРО ПОЖАЛОВАТЬ В НАШ ЧАТ!!!</h2>  
+            
+            <p class="registr_author"><a href="admin_authorization.php">Авторизация</a></p>
 
             <!--            <?php
 //// Выводим сообщение установлено ли соединение с сервером БД или нет

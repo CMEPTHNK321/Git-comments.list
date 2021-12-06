@@ -12,14 +12,15 @@ include "admin_authorization_process.php";
         <div class="body_wrap">
 
             <!-- Оформляем кнопки для взаимодействия с PHP -->
-            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
-                Nickname: <input type="text" name="nickName" size="20"  minlength="5" maxlength="30" > 
+            <form action="admin_authorization_process.php" method="post">
+                <h1 class="error"><?= $adminLoginError ?></h1>
+                Логин: <input type="text" name="nickName" size="20"  minlength="5" maxlength="30" > 
                 <span class="error">* <?php
                     if ($nickNameErr !== true) {
                         echo $nickNameErr;
                     }
                     ?></span><br><br>
-                Parol: <input type="text" name="parol" size="20"  minlength="8" maxlength="16"> 
+                Пароль: <input type="text" name="parol" size="20"  minlength="8" maxlength="16"> 
                 <span class="error">* <?php
                     if ($parolErr !== true) {
                         echo $parolErr;
