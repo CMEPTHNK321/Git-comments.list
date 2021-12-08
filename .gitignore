@@ -3,4 +3,5 @@ newEmptyPHP.php
 index_1.php
 zapros.php
 db_connect.php
-zapros_DNS.php
+zapros_DNS_create_tbl.php
+zapros_DNS_delete_tbl.php

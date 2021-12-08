@@ -1,6 +1,9 @@
 <?php
+session_start();
+if (!$_SESSION['adminExist']) {
+    header("Location: /index.php");
+}
 error_reporting(0xffff);
-
 //Подключаемся к базе данных 
 include "db_connect.php";
 
@@ -8,18 +11,21 @@ include "db_connect.php";
 include "admin_request_process.php";
 
 setcookie("name", $cookieNameClient, time() + 60 * 60 * 24 * 60);
+
 ?>
 <html>
     <head>
         <meta charset="UTF-8">
         <link type="Image/x-icon" href="/images/favicon.jpg" rel="icon">
-        <title>Лист Комментариев</title>
-        <link rel="stylesheet" href="admin_styles.css" type="text/css">
+        <title>Администратор</title>
+        <link rel="stylesheet" href="/style/style_admin.css" type="text/css">
     </head>
     <body>
         <div class="body_wrap">
 
-            <h2 class="chat_welcome">ДОБРО ПОЖАЛОВАТЬ В НАШ ЧАТ!!!</h2>  
+            <h2 class="chat_welcome">ДОБРО ПОЖАЛОВАТЬ В НАШ ЧАТ АДМИНИСТРАТОР!!!</h2>  
+            
+            <a class="registr_author" href="exit_admin.php">Выйти из режима Администратора</a>
             
             <?php
             //Выводим комментарии
@@ -37,7 +43,7 @@ setcookie("name", $cookieNameClient, time() + 60 * 60 * 24 * 60);
                 <div class="form">
                     <h1>Оставьте ваш комментарий</h1>
                     <form action="<?php echo htmlentities($_SERVER["PHP_SELF"]); ?>" method="post" ">
-                        Имя:<input type="Text" name="name" size="20" placeholder="Ваше имя" minlength="5" maxlength="30" value="<?php echo $savedName; ?>" > 
+                        Имя:<input type="Text" name="name" size="20" placeholder="Ваше имя" minlength="5" maxlength="30" value="Администратор" > 
                         <span class="error">* <?php
                             if ($nameErr !== true) {
                                 echo $nameErr;
@@ -57,6 +63,7 @@ setcookie("name", $cookieNameClient, time() + 60 * 60 * 24 * 60);
             //Отключаем соединение с БД за ненадобностью, вроде как 
             include "db_disconnect.php";
             ?>
+            
         </div>
     </body>    
 </html>

@@ -22,6 +22,10 @@ $textErr = true;
 //Создаем перменную вывода сообщения о создании комментария $createComment
 $createComment = true;
 
+$admi = "Администратор";
+
+$admin = "Administrator";
+
 //Проверяем метод запроса к серверу
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -58,6 +62,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $nameErr = "Только буквы и пробелы допустимы в имени";
     }
 
+    if ($name === $admi OR $name === $admin) {
+        $errFlag = false;
+        $nameErr = "Недопустимое имя";
+    }
     //Меняем значение переменной $valueCookie, если имя изменилось в соответствии с требованиями
 
     if ($errFlag === true) {
@@ -89,20 +97,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($errFlag == true) {
 
-    //Создаем переменную запроса для базы данных на создание комментария
+        //Создаем переменную запроса для базы данных на создание комментария
 
         $str_sql_query1 = "INSERT INTO $tblName (name, text) VALUES ('$name', '$text')";
 
-    //Выполняем запрос на создание комментария (создаем запись в базе данных)
+        //Выполняем запрос на создание комментария (создаем запись в базе данных)
 
-        if (!mysqli_query($link, $str_sql_query1)) {
-            $createComment = "<br><font color=\"#ff0000\">HЕ МОГУ СОЗДАТЬ КОММЕНТАРИЙ!!!</font><br>";
-        } else {
-            $createComment = "<br><font color=\"#ff00ff\" size=\"+3\" >Запись добавлена успешно!</font><br>";
-        }
+        mysqli_query($link, $str_sql_query1);
     }
 
-
+//          if (!) {  $createComment = "<br><font color=\"#ff0000\">HЕ МОГУ СОЗДАТЬ КОММЕНТАРИЙ!!!</font><br>";
+//       } else {
+//            $createComment = "<br><font color=\"#ff00ff\" size=\"+3\" >Запись добавлена успешно!</font><br>";
+//       }
+//   
     //Изменяем занчение перменной $savedText так, чтобы текст отображался, 
     //даже если были допуще какие либо ошибки при заполнении полей
 

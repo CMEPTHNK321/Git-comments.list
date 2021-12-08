@@ -95,11 +95,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         //Выполняем запрос на создание комментария (создаем запись в базе данных)
 
-        if (!mysqli_query($link, $str_sql_query1)) {
-            $createComment = "<br><font color=\"#ff0000\">HЕ МОГУ СОЗДАТЬ КОММЕНТАРИЙ!!!</font><br>";
-        } else {
-            $createComment = "<br><font color=\"#ff00ff\" size=\"+3\" >Запись добавлена успешно!</font><br>";
-        }
+        mysqli_query($link, $str_sql_query1);
+//         if (!) {   $createComment = "<br><font color=\"#ff0000\">HЕ МОГУ СОЗДАТЬ КОММЕНТАРИЙ!!!</font><br>";
+//        } else {
+//            $createComment = "<br><p style=\"color:#ff00ff; font-size:large; margin\">Запись добавлена успешно!</p><br>";
+//        }
     }
 
 

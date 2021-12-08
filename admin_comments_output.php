@@ -1,7 +1,7 @@
 <?php
 //ВЫВОДИМ ВСЕ КОММЕНТАРИИ 
 //Создаем переменную запроса обращающуюся к нашей таблице в базе данных
-$str_sql_query4 = "SELECT * FROM $tblName";
+$str_sql_query4 = "SELECT * FROM $tblName ORDER BY id DESC";
 
 //Создаем запрос на вывод из таблицы всех комментариев 
 $result = mysqli_query($link, $str_sql_query4);
@@ -10,6 +10,12 @@ $result = mysqli_query($link, $str_sql_query4);
 //setlocale(LC_ALL, 'ru_RU.CP1251', 'rus_RUS.CP1251', 'Russian_Russia.1251'); // 'ru_RUS', 'ru_RUS.UTF-8', 'ru', 'russian'
 //strftime("%Y %B %d %H:%M", $commentUnixTime)
 //Выводим результат запроса в браузер, предварительно сортируя их соответсвено нашим условиям
+?>
+
+<form class="all_comment" action="admin_delete_comment.php" method="post">
+    
+    <?php
+
 while ($row = mysqli_fetch_assoc($result)) {
     if ($row["deleted"] == 0) {
 
@@ -33,23 +39,30 @@ while ($row = mysqli_fetch_assoc($result)) {
         }
 
         ?>
-        <form action="admin_delete_comment.php" method="post" >
-            <div class='one_single_comment'>
+        <!--<form action="admin_delete_comment.php" method="post" >-->
+            <!--<div class='one_single_comment'>-->
                 <p class='date_time'>
                     <span class='polzovatel'>Пользователь:</span>
                     <?= $row["name"] ?> 
                     <span class='show_time' style="color:<?= $commentDateColor ?>"><?= date("Y M d H:i", $commentUnixTime) ?></span>
-                    <span class='write'>написал</span>
+                    <span class='write'>написал(а)</span>
                     <span class="delete_button">
-                        <input type="text" name="that" value = "<?= $id ?>">
-                        <input type="submit" value="Удалить">
+                        <!--<input type="text" name="that" value = "<?= $id ?>">-->
+                        <label><input type="checkbox" name="that[]" value = "<?= $id ?>">Сообщение<?= $id ?></label>
+<!--                        <input type="submit" value="Удалить">-->
                         <!--<input type="submit" name="that" value="<?= $id ?>"><span><<Удалить комментраий</span>-->
+                        <input type="submit" name="delete_multiple_messages" value="Удалить">
                     </span></p>
                 <div class='text_wrap clearfix'>
                     <p class='textes'><?= $row['text'] ?></p>
                 </div>
-            </div>
-        </form>
+            <!--</div>-->
+        <!--</form>-->
         <?php
     }
 }
+?>
+        <!--<a name="end" ></a>-->
+        
+        <!--<span class="delete_button"><input type="submit" name="delete_multiple_messages" value="Удалить"></span>-->
+</form>

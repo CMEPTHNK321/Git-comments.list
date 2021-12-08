@@ -8,12 +8,7 @@ body {
     background-size: cover;
     font-size: 100%;
     margin: 0;
-}
-
-/*Задаем стиль для все <p>*/
-p {
-    padding: 0;
-    margin: 0;
+    /*position: relative;*/
 }
 
 /*Задаем стиль для <div> в <body>*/
@@ -22,18 +17,24 @@ p {
     margin: auto;
     padding: 15px;
     background: inherit;
+    position: relative;
 }
 
 .chat_welcome {
     text-align: center;
-    color: blue;
+    color: red;
 }
 
 .registr_author {
-    text-align: left;
-    border: 1px solid blue;
-    background-color: lightblue; 
-    width: 8%;
+    /*position: relative;*/
+    text-align: center;
+    border: 2px solid red;
+    background-color: black; 
+    width: 20%;
+    padding: 15px;
+    color: white;
+    text-decoration: none;
+    margin-bottom: 100px;
 }
 
 /*Задаем стиль ошибки при вводе имени и текста пользователем*/
@@ -42,16 +43,19 @@ p {
 }
 
 /*Обертываем весь вывод одного полного комментария*/
-.one_single_comment {
+.all_comment {
     position: relative;
     width: 100%;
-    margin: 15px 0;
+    margin: 15px 0 0 0;
     z-index:59;
+    background: inherit;
+    margin-bottom: 350px;
 }
 
 /*Обертываем время  и пользрвателя*/
 .date_time {
     padding-bottom: 5px;
+    margin: 0;
 }
 
 /*Задаем стиль слова Пользователь комментариев в конце*/
@@ -85,6 +89,7 @@ p {
     position: relative;
     width: 100%;
     float: none;
+    margin: 0;
 }
 
 /*Задаем .clearfix для .text_wrap*/
@@ -97,22 +102,35 @@ p {
     float: left;
     width: 65%;
     border: 1px solid green;
-    background-color: yellow;
+    background-color: white;
     border-radius: 5px;
     overflow: auto;
+    padding:5px;
+    margin: 0 0 15 0;
 }
 
 /*Задаем стиль для <form> Чтоб оставалось всегдана экране*/
 .form{
-   width: 100%;
-    position: -webkit-sticky;
-    position: sticky;
+    width: 100%;
+    /*    position: -webkit-sticky;
+        position: sticky;*/
+    position: fixed;
     bottom: 0;
-/*    position: absolute;
-    bottom: 0;*/
+    /*display:flex;*/
+    /*left: 0;*/
+    /*    position: absolute;
+        bottom: 0;*/
     padding: 5px;
     opacity: 1;
     z-index:99;
     background: inherit;
-    /*margin-bottom: 20px;*/
+    /*margin-top: 220px;*/
 }
+
+/*.delete_button {
+    position: fixed;
+    top: 0;
+    right:30%;
+    width: 50px;
+    height:15px;
+}*/

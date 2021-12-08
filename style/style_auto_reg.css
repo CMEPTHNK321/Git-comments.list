@@ -1,0 +1,77 @@
+/** {
+    box-sizing: border-box;
+}*/
+
+/*Задаем стиль body*/
+body {
+    background-color: lightblue;
+    background-image: url("/images/yuno.jpg");
+    background-attachment: fixed;
+    background-position-x: right;
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-size: 100%;
+    margin: 0;
+    color: white;
+    font-size: 22px;
+}
+
+/*Задаем стиль для <div> в <body>*/
+.body_wrap {
+    width: 70%;
+    margin: auto;
+    padding: 15px;
+    background: inherit;
+    position: relative;
+}
+
+.form_autoreg {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 400px;
+}
+
+input {
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+button {
+    padding: 8px;
+    margin-top: 10px;
+    width: 340px;
+    border-radius: 8px;
+}
+
+/*Задаем стиль ошибки при вводе имени и текста пользователем*/
+.error {
+    color: #ff0000;
+}
+
+a {
+    border-radius: 8px;
+    background-color: lightgrey; 
+    padding: 5px; 
+    text-decoration: none;
+    /*margin-top: 30px;*/
+}
+
+p {
+    position:relative;
+    margin-left: 250px;
+    /*float: left;*/
+}
+
+.reg_mes {
+    position: absolute;
+    font-size: 35px;
+    color: red;
+    top: 100px;
+    right: -350;
+    border: 3px solid red;
+/*    background-color: white;*/
+    padding: 5px;
+    border-radius: 8px;
+}

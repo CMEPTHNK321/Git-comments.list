@@ -1,5 +1,10 @@
 <?php
 
+session_start();
+require_once 'db_connect.php';
+
+//$_SESSION['userExist'] = 0;
+//$_SESSION['adminExist'] = 0;
 //СОЗДАЕМ ПЕРЕМЕННЫЕ КОТОРЫЕ МОГУТ ПОНАДОБИТСЯ
 //Создаем переменную значения $valueCookie для куки
 //$cookieNameClient = isset($_COOKIE["name"]) ? htmlentities($_COOKIE["name"]) : '';
@@ -14,8 +19,7 @@ $adminName = "Maxym";
 
 $adminParol = "12345678";
 
-$adminLoginError= "Введите логин и пароль";
-
+//$adminLoginError = "Введите логин и пароль";
 //Создаем перменную вывода названия ошибки поля name $nameErr
 $nickNameErr = true;
 
@@ -71,31 +75,53 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     //Проверяем,чтоб переменная $text не была слишком короткой 
     //Вводим переменную ошибки $textErr
 
-    if (mb_strlen($parol) < 7) {
+    if (mb_strlen($parol) < 5) {
         $errFlag = false;
-        $parolErr = "Длина пароля должна быть не менее 8ми символов";
+        $parolErr = "Длина пароля должна быть не менее 6-ти символов";
     }
 
     //Проверяем, чтоб переменная $text не была слишком длинной
 
-    if (mb_strlen($parol) > 16) {
+    if (mb_strlen($parol) > 26) {
         $errFlag = false;
-        $parolErr = "Длина пароля должна быть менее 16ти символов";
+        $parolErr = "Длина пароля должна быть менее 26ти символов";
     }
 
     if ($errFlag == false) {
-        $adminLoginError =  "Неверный логин или пароль";
+//        $adminLoginError = "Неверный логин или пароль";
+        $_SESSION['registr_message'] = "Пароль или логин не соответствует требованиям";
+        header("Location: /main_authorization.php");
     }
-        if ($errFlag == true AND $nickName == $adminName AND $parol == $adminParol) {
 
-            header("Location: administrator.php");
-            //  echo "<h3 style='text-align: center'><a href='administrator.php'> Нажмите для перехода на страницу администратора</a></h3>";
-            //<a href="authorization.php">Авторизация</a>
-        }else {
-            header("Location: admin_authorization.php");
+    if ($errFlag == true AND $nickName == $adminName AND $parol == $adminParol) {
+
+        $_SESSION['adminExist'] = 1;
+        header("Location: /main_administrator.php");
+        //  echo "<h3 style='text-align: center'><a href='administrator.php'> Нажмите для перехода на страницу администратора</a></h3>";
+        //<a href="authorization.php">Авторизация</a>
+    }
+
+    if ($errFlag == true) {
+        $parol = md5($parol);
+        $str_sql_query11 = "SELECT * FROM  $tblName2 WHERE login='$nickName' AND password='$parol'";
+        $check = mysqli_query($link, $str_sql_query11);
+        //функция mysqli_num_rows($check) подсчитывает количество совпадений в запросе
+        $ready = mysqli_num_rows($check);
+        if ($ready > 0) {
+            $_SESSION['userName'] = $nickName;
+            $_SESSION['userExist'] = 1;
+            header("Location: /main_user.php");
+        } else {
+//            $adminLoginError = "Неверный логин или пароль";
+            $_SESSION['registr_message'] = "Не верный логин или пароль";
+            header("Location: /main_authorization.php");
         }
-
-        
+    }
+//    else {
+//        $adminLoginError = "Неверный логин или пароль";
+//        $_SESSION['registr_message'] = "Не верный логин или пароль";
+//        header("Location: /main_authorization.php");
+//    }
 //    if ($errFlag == true) {
 //
 //    //Создаем переменную запроса для базы данных на создание комментария
@@ -118,4 +144,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 //    if ($errFlag == false) {
 //        $savedText = $text;
 //    }
-}
+}    

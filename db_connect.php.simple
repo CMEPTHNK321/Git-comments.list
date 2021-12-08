@@ -4,7 +4,8 @@
     $user_name = "имя";
     $user_password = "пароль";
     $db_name = "имя БД";
-    $tblName = "имя таблицы";
+    $tblName = "имя таблицы с комментами";
+    $tblName2 = "имя таблицы с логинами и паролями"
  // соединение с сервером базы данных
 f (!$link = mysqli_connect($sdb_name, $user_name, $user_password)) {
     $sbdConnect = "<p class='message_err'>He могу соединиться с сервером базы данных <p>";
