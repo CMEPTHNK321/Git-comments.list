@@ -1,5 +1,5 @@
 <?php
-
+//session_start();
 //СОЗДАЕМ ПЕРЕМЕННЫЕ КОТОРЫЕ МОГУТ ПОНАДОБИТСЯ
 //Создаем переменную значения $valueCookie для куки
 $cookieNameClient = isset($_COOKIE["name"]) ? htmlentities($_COOKIE["name"]) : '';

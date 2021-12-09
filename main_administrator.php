@@ -1,8 +1,8 @@
 <?php
 session_start();
-if (!$_SESSION['adminExist']) {
-    header("Location: /index.php");
-}
+//if (!$_SESSION['adminExist']) {
+//    header("Location: /index.php");
+//}
 error_reporting(0xffff);
 //Подключаемся к базе данных 
 include "db_connect.php";
@@ -23,9 +23,9 @@ setcookie("name", $cookieNameClient, time() + 60 * 60 * 24 * 60);
     <body>
         <div class="body_wrap">
 
-            <h2 class="chat_welcome">ДОБРО ПОЖАЛОВАТЬ В НАШ ЧАТ АДМИНИСТРАТОР!!!</h2>  
+            <h2 class="chat_welcome">ДОБРО ПОЖАЛОВАТЬ В ЧАТ АДМИНИСТРАТОР!!!</h2>  
             
-            <a class="registr_author" href="exit_admin.php">Выйти из режима Администратора</a>
+            <div class="sticky"><a class="registr_author" href="exit_admin.php">Выйти из режима Администратора</a></div>
             
             <?php
             //Выводим комментарии
@@ -41,7 +41,7 @@ setcookie("name", $cookieNameClient, time() + 60 * 60 * 24 * 60);
 
             <!-- Оформляем кнопки для взаимодействия с PHP -->
                 <div class="form">
-                    <h1>Оставьте ваш комментарий</h1>
+                    <p class="agitation_admin">Властвуй над пользователями, о великий Администратор!</p>
                     <form action="<?php echo htmlentities($_SERVER["PHP_SELF"]); ?>" method="post" ">
                         Имя:<input type="Text" name="name" size="20" placeholder="Ваше имя" minlength="5" maxlength="30" value="Администратор" > 
                         <span class="error">* <?php

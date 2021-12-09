@@ -1,11 +1,11 @@
 <?php
 session_start();
-if ($_SESSION['adminExist']) {
-    header("Location: /main_administrator.php");
-}
-if ($_SESSION['userExist']) {
-    header("Location: /main_user.php");
-}
+//if ($_SESSION['adminExist']) {
+//    header("Location: /main_administrator.php");
+//}
+//if ($_SESSION['userExist']) {
+//    header("Location: /main_user.php");
+//}
 setcookie("name_reg", $cookieNameClientReg, time() + 60 * 60 * 24 * 60);
 include "registration_process.php";
 ?>
@@ -23,10 +23,10 @@ include "registration_process.php";
                 <h1 class="error">Введите логин и пароль для регистрации</h1>
                 <label>Логин:</label>
                 <div>
-                    <input type="text" name="login" size="50"  minlength="5" maxlength="30" placeholder="Введите ваш логин"> 
+                    <input type="text" name="login" size="50"  minlength="5" maxlength="30" <?php if (isset($_SESSION['reg_login_try'])) { ?> value="<?= $_SESSION['reg_login_try'] ?>"<?php } else { ?>placeholder="Введите логин"<?php } ?>"> 
                     <span class="error">* <?php
-                        if ($nickNameErr !== true) {
-                            echo $nickNameErr;
+                        if ($_SESSION['nickNameErr'] !== true) {
+                            echo $_SESSION['nickNameErr'];
                         }
                         ?></span>
                 </div>
@@ -34,8 +34,8 @@ include "registration_process.php";
                 <div>
                     <input type="password" name="password"  size="50" minlength="6" maxlength="25" placeholder="Введите пароль"> 
                     <span class="error">*<?php
-                        if ($parolErr !== true) {
-                            echo $parolErr;
+                        if ($_SESSION['parolErr'] !== true) {
+                            echo $_SESSION['parolErr'];
                         }
                         ?></span>
                 </div>
@@ -43,13 +43,13 @@ include "registration_process.php";
                 <div>
                     <input type="password" name="password_confirm" size="50"  minlength="6" maxlength="25" placeholder="Подтвердите пароль"> 
                     <span class="error">* <?php
-                        if ($parolErr !== true) {
-                            echo $parolErr;
+                        if ($_SESSION['parolErr'] !== true) {
+                            echo $_SESSION['parolErr'];
                         }
                         ?></span>
                 </div>
                 <button type="submit">Зарегестрироваться</button>
-                <p>У вас уже есть аккаунт? - <a href="main_authorization.php">АВТОРИЗИРУЙТЕСЬ!</a></p>
+                <p class="button_authorization_place"><span class="button_autorization">У вас уже есть аккаунт?</span><a href="main_authorization.php">АВТОРИЗИРУЙТЕСЬ!</a></p>
                 <?php
                 if (isset($_SESSION['registr_message'])) {
                     echo "<p class='reg_mes'>" . $_SESSION['registr_message'] . "</p>";
@@ -57,6 +57,7 @@ include "registration_process.php";
                 }
                 ?>
             </form>
+            <a class="back_to_chat" href="index.php">Вернуться в чат, как гость</a>
         </div>
     </body>    
 </html>

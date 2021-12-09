@@ -2,7 +2,6 @@
 
 session_start();
 require_once 'db_connect.php';
-
 //$_SESSION['userExist'] = 0;
 //$_SESSION['adminExist'] = 0;
 //СОЗДАЕМ ПЕРЕМЕННЫЕ КОТОРЫЕ МОГУТ ПОНАДОБИТСЯ
@@ -21,10 +20,10 @@ $adminParol = "12345678";
 
 //$adminLoginError = "Введите логин и пароль";
 //Создаем перменную вывода названия ошибки поля name $nameErr
-$nickNameErr = true;
+$_SESSION['nickNameErr'] = true;
 
 //Создаем перменную ошибки поля text $textErr
-$parolErr = true;
+$_SESSION['parolErr'] = true;
 
 //Создаем перменную вывода сообщения о создании комментария $createComment
 //$createComment = true;
@@ -37,6 +36,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     //Если существуют, то создаем переменную $name и экранируем её 
     $nickName = isset($_POST["nickName"]) ? htmlentities($_POST["nickName"]) : '';
 
+    
+       if($nickName !== '') {$_SESSION['login_try'] = $nickName;}
+       
+//unset($_SESSION['login_try']);
+    
+
     //Если в поле ввода имени чтото появилось, мы хоти чтоб это оставалось и дальше,
     //поетому присваиваем переменной $savedName новое значение введенное в поле имени, даже если оно не соответсвует требованиям
     //$savedNickName = $nickName;
@@ -45,21 +50,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if (mb_strlen($nickName) < 4) {
         $errFlag = false;
-        $nickNameErr = "Длина имени должна быть не менее 5ти символов";
+        $_SESSION['nickNameErr'] = "Длина имени должна быть не менее 5ти символов";
     }
 
     //Проверяем, чтоб переменная $name не была слишком длинной
 
     if (mb_strlen($nickName) > 30) {
         $errFlag = false;
-        $nickNameErr = "Длина имени должна быть менее 30ти символов";
+        $_SESSION['nickNameErr'] = "Длина имени должна быть менее 30ти символов";
     }
 
     //Проверяем, чтоб в переменной $name были только буквы и пробелы
 
     if (!preg_match("/^[\p{L} ]*$/u", $nickName)) {
         $errFlag = false;
-        $nickNameErr = "Только буквы и пробелы допустимы в имени";
+        $_SESSION['nickNameErr'] = "Только буквы и пробелы допустимы в имени";
     }
 
     //Меняем значение переменной $valueCookie, если имя изменилось в соответствии с требованиями
@@ -77,14 +82,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if (mb_strlen($parol) < 5) {
         $errFlag = false;
-        $parolErr = "Длина пароля должна быть не менее 6-ти символов";
+        $_SESSION['parolErr'] = "Длина пароля должна быть не менее 6-ти символов";
     }
 
     //Проверяем, чтоб переменная $text не была слишком длинной
 
     if (mb_strlen($parol) > 26) {
         $errFlag = false;
-        $parolErr = "Длина пароля должна быть менее 26ти символов";
+        $_SESSION['parolErr'] = "Длина пароля должна быть менее 26ти символов";
     }
 
     if ($errFlag == false) {
@@ -96,7 +101,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($errFlag == true AND $nickName == $adminName AND $parol == $adminParol) {
 
         $_SESSION['adminExist'] = 1;
+        unset($_SESSION['login_try']);
         header("Location: /main_administrator.php");
+        die();
         //  echo "<h3 style='text-align: center'><a href='administrator.php'> Нажмите для перехода на страницу администратора</a></h3>";
         //<a href="authorization.php">Авторизация</a>
     }
@@ -110,6 +117,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($ready > 0) {
             $_SESSION['userName'] = $nickName;
             $_SESSION['userExist'] = 1;
+            unset($_SESSION['login_try']);
             header("Location: /main_user.php");
         } else {
 //            $adminLoginError = "Неверный логин или пароль";

@@ -10,7 +10,7 @@ body {
     background-position-x: right;
     background-repeat: no-repeat;
     background-size: cover;
-    font-size: 100%;
+    /*font-size: 100%;*/
     margin: 0;
     color: white;
     font-size: 22px;
@@ -51,27 +51,64 @@ button {
 }
 
 a {
+    display: inline-block;
     border-radius: 8px;
     background-color: lightgrey; 
     padding: 5px; 
     text-decoration: none;
-    /*margin-top: 30px;*/
+    margin-top: 5px;
 }
 
-p {
-    position:relative;
+.button_autorization {
+    white-space: nowrap;
+/*    display: inline;
+    position: relative;
+    text-align: center;
+    width: 50px;*/
+    /*border-radius: 8px;*/
+    /*background-color: lightgrey;*/ 
+    /*padding: 5px;*/ 
+    /*text-decoration: none;*/
+    /*margin-top: 30px;*/
+    /*box-sizing: none;*/
+/*    display: flex;
+    flex-direction: row;*/
+}
+
+.button_authorization_place {
+    position: relative;
     margin-left: 250px;
+/*    display: inline;
+    position: relative;*/
     /*float: left;*/
 }
 
 .reg_mes {
+    width: 200px;
     position: absolute;
     font-size: 35px;
     color: red;
     top: 100px;
-    right: -350;
+    left: 415;
     border: 3px solid red;
 /*    background-color: white;*/
     padding: 5px;
     border-radius: 8px;
+}
+
+.back_to_chat {
+    position: relative;
+    top: -110px;
+    left: -80px;
+    width: 180px;
+    font-size: 25px;
+    font-family: Times, Times New Roman, serif;
+    text-align: center;
+    display: inline-block;
+    color: white;
+    border-radius: 8px;
+    background-color: black; 
+    padding: 10px; 
+    text-decoration: none;
+    margin-top: 5px;
 }

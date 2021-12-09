@@ -48,7 +48,7 @@ while ($row = mysqli_fetch_assoc($result)) {
                     <span class='write'>написал(а)</span>
                     <span class="delete_button">
                         <!--<input type="text" name="that" value = "<?= $id ?>">-->
-                        <label><input type="checkbox" name="that[]" value = "<?= $id ?>">Сообщение<?= $id ?></label>
+                        <label><input type="checkbox" name="that[]" value = "<?= $id ?>">Стр#<?= $id ?></label>
 <!--                        <input type="submit" value="Удалить">-->
                         <!--<input type="submit" name="that" value="<?= $id ?>"><span><<Удалить комментраий</span>-->
                         <input type="submit" name="delete_multiple_messages" value="Удалить">

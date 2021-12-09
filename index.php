@@ -1,11 +1,11 @@
 <?php
 session_start();
-if ($_SESSION['adminExist']) {
-    header("Location: /main_administrator.php");
-}
-if ($_SESSION['userExist']) {
-    header("Location: /main_user.php");
-}
+//if ($_SESSION['adminExist']) {
+//    header("Location: /main_administrator.php");
+//}
+//if ($_SESSION['userExist']) {
+//    header("Location: /main_user.php");
+//}
 error_reporting(0xffff);
 //Подключаемся к базе данных 
 include "db_connect.php";
@@ -27,7 +27,7 @@ setcookie("name", $cookieNameClient, time() + 60 * 60 * 24 * 60);
 
             <h2 class="chat_welcome">ДОБРО ПОЖАЛОВАТЬ В НАШ ЧАТ!!!</h2>  
 
-            <a class="registr_author" href="main_authorization.php">Авторизация и регистрация</a>
+            <div class="sticky"><a class="registr_author" href="main_authorization.php">Авторизация и регистрация</a></div>
 
             <!--            <?php
 //// Выводим сообщение установлено ли соединение с сервером БД или нет
@@ -51,7 +51,7 @@ setcookie("name", $cookieNameClient, time() + 60 * 60 * 24 * 60);
 
             <!-- Оформляем кнопки для взаимодействия с PHP -->
             <div class="form">
-                <h1>Оставьте ваш комментарий</h1>
+                <p class="agitation_main">Оставьте ваш комментарий</p>
                 <form action="<?php echo htmlentities($_SERVER["PHP_SELF"]); ?>" method="post" >
                     Имя:<input type="Text" name="name" size="20" placeholder="Ваше имя" minlength="5" maxlength="30" value="<?php echo $savedName; ?>" > 
                     <span class="error">* <?php

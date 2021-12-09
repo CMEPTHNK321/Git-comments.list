@@ -22,19 +22,34 @@ body {
 
 .chat_welcome {
     text-align: center;
-    color: red;
+    color: black;
+    border: 3px solid green;
+    border-radius: 12px;
+    width: 46%;
+    margin: auto;
+    overflow: auto;
+    background-color: #d8f800;
+}
+
+.sticky {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 5px;
+    z-index: 69;
 }
 
 .registr_author {
     /*position: relative;*/
     text-align: center;
     border: 2px solid red;
-    background-color: black; 
+    border-radius: 12px;
+    background-color: #9BED00; 
     width: 20%;
     padding: 15px;
-    color: white;
+    color: #160773;
     text-decoration: none;
-    margin-bottom: 100px;
+    display:inline-block;
+    margin-bottom: 10px;
 }
 
 /*Задаем стиль ошибки при вводе имени и текста пользователем*/
@@ -66,7 +81,7 @@ body {
 }
 
 .write {
-    ont-family: "Times New Roman", Times, serif;
+    font-family: "Times New Roman", Times, serif;
     font-style: italic;
     margin-left: 5px;
 }
@@ -106,7 +121,7 @@ body {
     border-radius: 5px;
     overflow: auto;
     padding:5px;
-    margin: 0 0 15 0;
+    margin: 0 0 15px 0;
 }
 
 /*Задаем стиль для <form> Чтоб оставалось всегдана экране*/
@@ -125,6 +140,19 @@ body {
     z-index:99;
     background: inherit;
     /*margin-top: 220px;*/
+}
+
+.agitation_admin{
+    width: 27%;
+    text-align: center;
+    font-size: 20px;
+    margin-left: 3%;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    padding: 5px;
+    border: 2px solid red;
+    border-radius: 8px;
+    background-color: #ff8100;
 }
 
 /*.delete_button {

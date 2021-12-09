@@ -13,6 +13,7 @@ body {
 
 /*Задаем стиль для <div> в <body>*/
 .body_wrap {
+    position:relative;
     width: 70%;
     margin: auto;
     padding: 15px;
@@ -21,19 +22,67 @@ body {
 
 .chat_welcome {
     text-align: center;
-    color: red;
+    color: white;
+    border: 3px solid green;
+    border-radius: 12px;
+    width: 45%;
+    margin: auto;
+    overflow: auto;
+    background-color: #00cc00;
+}
+
+.welcome_user {
+    font-family: New Century Schoolbook, TeX Gyre Schola, serif;
+    color: black;
+    background-color: #f7fe72;
+    margin-right: 3px;
+    margin-left: 3px;
+    border-radius: 8px;
+    padding: 3px;
+}
+
+.sticky {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 5px;
+    z-index: 69;
+}
+
+.sticky_user {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 5px;
+    z-index: 69;
 }
 
 .registr_author {
     /*position: relative;*/
     text-align: center;
     border: 2px solid red;
+    border-radius: 12px;
     background-color: black; 
     width: 20%;
     padding: 15px;
     color: white;
     text-decoration: none;
-    margin-bottom: 100px;
+    display:inline-block;
+    margin-bottom: 10px;
+/*    position: -webkit-sticky;
+    position: sticky;*/
+}
+
+.registr_user {
+    /*position: relative;*/
+    text-align: center;
+    border: 2px solid red;
+    border-radius: 12px;
+    background-color: #ffdb00; 
+    width: 20%;
+    padding: 15px;
+    color: #160773;
+    text-decoration: none;
+    display:inline-block;
+    margin-bottom: 10px;
 }
 
 /*Задаем стиль ошибки при вводе имени и текста пользователем*/
@@ -65,7 +114,7 @@ body {
 }
 
 .write {
-    ont-family: "Times New Roman", Times, serif;
+    font-family: "Times New Roman", Times, serif;
     font-style: italic;
     margin-left: 5px;
 }
@@ -100,7 +149,7 @@ body {
     border-radius: 5px;
     overflow: auto;
     padding:5px;
-    margin: 0 0 15 0;
+    margin: 0 0 15px 0;
 }
 
 /*Задаем стиль для <form> Чтоб оставалось всегдана экране*/
@@ -119,4 +168,45 @@ body {
     z-index:99;
     background: inherit;
     /*margin-top: 220px;*/
+}
+
+.agitation_user {
+    width: 20%;
+    font-size: 20px;
+    margin-left: 3%;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    padding: 5px;
+    border: 2px solid red;
+    border-radius: 8px;
+    background-color: #ff7c00;
+    
+}
+
+.agitation_main {
+    width: 13%;
+    font-size: 20px;
+    margin-left: 3%;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    padding: 5px;
+    border: 2px solid red;
+    border-radius: 8px;
+    background-color: #ff7c00;
+    
+}
+
+.print_user_name {
+/*   font-family: Andale Mono, monospace;*/
+   /*font-size: 15px;*/
+   font-weight: bold;
+   margin-bottom: 5px;
+}
+
+.user_name {
+    font-family: New Century Schoolbook, TeX Gyre Schola, serif;
+    font-size: 20px;
+    background-color: #f7fe72; 
+    padding: 5px;
+    border-radius: 8px;
 }

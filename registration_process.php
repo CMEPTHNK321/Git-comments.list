@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 require_once 'db_connect.php';
 //СОЗДАЕМ ПЕРЕМЕННЫЕ КОТОРЫЕ МОГУТ ПОНАДОБИТСЯ
@@ -17,10 +16,10 @@ $errFlag = true;
 
 //$adminLoginError = "Введите логин и пароль";
 //Создаем перменную вывода названия ошибки поля name $nameErr
-$nickNameErr = true;
+$_SESSION['nickNameErr'] = true;
 
 //Создаем перменную ошибки поля text $textErr
-$parolErr = true;
+$_SESSION['parolErr'] = true;
 
 //Создаем перменную вывода сообщения о создании комментария $createComment
 //$createComment = true;
@@ -32,6 +31,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     //Проверяем, существуют ли  данные для переменной $name 
     //Если существуют, то создаем переменную $name и экранируем её 
     $login = isset($_POST["login"]) ? htmlentities($_POST["login"]) : '';
+    
+    if($login !== '') {$_SESSION['reg_login_try'] = $login;}
 
     //Если в поле ввода имени чтото появилось, мы хоти чтоб это оставалось и дальше,
     //поетому присваиваем переменной $savedName новое значение введенное в поле имени, даже если оно не соответсвует требованиям
@@ -41,21 +42,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if (mb_strlen($login) < 4) {
         $errFlag = false;
-        $nickNameErr = "Длина имени должна быть не менее 5ти символов";
+        $_SESSION['nickNameErr'] = "Длина имени должна быть не менее 5ти символов";
     }
 
     //Проверяем, чтоб переменная $name не была слишком длинной
 
     if (mb_strlen($login) > 30) {
         $errFlag = false;
-        $nickNameErr = "Длина имени должна быть менее 30ти символов";
+        $_SESSION['nickNameErr'] = "Длина имени должна быть менее 30ти символов";
     }
 
     //Проверяем, чтоб в переменной $name были только буквы и пробелы
 
     if (!preg_match("/^[\p{L} ]*$/u", $login)) {
         $errFlag = false;
-        $nickNameErr = "Только буквы и пробелы допустимы в имени";
+        $_SESSION['nickNameErr'] = "Только буквы и пробелы допустимы в имени";
     }
 
     //Меняем значение переменной $valueCookie, если имя изменилось в соответствии с требованиями
@@ -73,39 +74,39 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if (mb_strlen($password) < 5) {
         $errFlag = false;
-        $parolErr = "Длина пароля должна быть не менее 6-ти символов";
+        $_SESSION['parolErr'] = "Длина пароля должна быть не менее 6-ти символов";
     }
 
     //Проверяем, чтоб переменная $text не была слишком длинной
 
     if (mb_strlen($password) > 26) {
         $errFlag = false;
-        $parolErr = "Длина пароля должна быть менее 26-ти символов";
+        $_SESSION['parolErr'] = "Длина пароля должна быть менее 26-ти символов";
     }
 
     $password_confirm = isset($_POST["password_confirm"]) ? htmlentities($_POST["password_confirm"]) : '';
 
     if (mb_strlen($password_confirm) < 5) {
         $errFlag = false;
-        $parolErr = "Длина пароля должна быть не менее 6-ти символов";
+        $_SESSION['parolErr'] = "Длина пароля должна быть не менее 6-ти символов";
     }
 
     //Проверяем, чтоб переменная $text не была слишком длинной
 
     if (mb_strlen($password_confirm) > 26) {
         $errFlag = false;
-        $parolErr = "Длина пароля должна быть менее 26-ти символов";
+        $_SESSION['parolErr'] = "Длина пароля должна быть менее 26-ти символов";
     }
 
     if ($errFlag == false) {
-        $adminLoginError = "Неверный логин или пароль";
+//        $adminLoginError = "Неверный логин или пароль";
 //        $adminLoginError = "Неверный логин или пароль";
         header("Location: /main_registration.php");
     }
 
     if ($password !== $password_confirm) {
         $errFlag = false;
-        $adminLoginError = "Пароли не совпадают!";
+//        $adminLoginError = "Пароли не совпадают!";
         $_SESSION['registr_message'] = "Пароли не совпадают";
         header("Location: /main_registration.php");
     }
@@ -125,6 +126,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             mysqli_query($link, $str_sql_query10);
 //        $_SESSION['userName']=$login;
             $_SESSION['registr_message'] = "Регистрация прошла успешно";
+            unset($_SESSION['reg_login_try']);
             header("Location: /main_authorization.php");
         }
     }

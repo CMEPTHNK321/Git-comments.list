@@ -1,8 +1,8 @@
 <?php
-session_start();
-if (!$_SESSION['userExist']) {
-    header("Location: /index.php");
-}
+//session_start();
+//if (!$_SESSION['userExist']) {
+//    header("Location: /index.php");
+//}
 error_reporting(0xffff);
 //Подключаемся к базе данных 
 include "db_connect.php";
@@ -22,9 +22,9 @@ include "client_request_process.php";
     <body>
         <div class="body_wrap">
 
-            <h2 class="chat_welcome">ДОБРО ПОЖАЛОВАТЬ В ЧАТ <?= $_SESSION['userName'] ?>!!!</h2>  
+            <h2 class="chat_welcome">ДОБРО ПОЖАЛОВАТЬ В ЧАТ<span class="welcome_user"><?= $_SESSION['userName'] ?></span>!!!</h2> 
 
-            <a class="registr_author" href="exit_user.php">Выйти из аккаунта</a>
+            <div class="sticky_user"><a class="registr_user" href="exit_user.php">Выйти из аккаунта</a></div>
 
             <!--            <?php
 //// Выводим сообщение установлено ли соединение с сервером БД или нет
@@ -48,14 +48,14 @@ include "client_request_process.php";
 
             <!-- Оформляем кнопки для взаимодействия с PHP -->
             <div class="form">
-                <h1>Оставьте ваш комментарий</h1>
+                <p class="agitation_user">Оставьте ваш след в истории человечества!</p>
                 <form action="<?php echo htmlentities($_SERVER["PHP_SELF"]); ?>" method="post" >
-                    Имя:<input type="Text" name="name" size="20" placeholder="Ваше имя" minlength="5" maxlength="30" value="<?php echo $_SESSION['userName']; ?>" > 
-                    <span class="error">* <?php
+                    <!--Имя:--><div class="print_user_name">Ползователь: <span class="user_name"><?php echo $_SESSION['userName']; ?></span></div>
+<!--                    <span class="error">* <?php
                         if ($nameErr !== true) {
                             echo $nameErr;
                         }
-                        ?></span><br><br>
+                        ?></span><br><br>-->
                     <textarea type="Text" name="text" rows="10" cols="70" placeholder="Ваш комментарий" minlength="10" maxlength="750"><?php echo $savedText; ?></textarea>
                     <span class="error">* <?php
                         if ($textErr !== true) {
