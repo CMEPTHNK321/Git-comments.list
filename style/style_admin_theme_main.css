@@ -31,11 +31,25 @@ body {
     background-color: #d8f800;
 }
 
+/*.nechto {
+    float: left;
+    width: 23.5%;
+    margin-right: 2%;
+}*/
+
 .sticky {
     position: -webkit-sticky;
     position: sticky;
     top: 5px;
     z-index: 69;
+}
+
+.theme {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 5px;
+    z-index: 69;
+    margin-left: 320px;
 }
 
 .registr_author {

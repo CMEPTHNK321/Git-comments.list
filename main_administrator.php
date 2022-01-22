@@ -17,7 +17,18 @@ setcookie("name", $cookieNameClient, time() + 60 * 60 * 24 * 60);
         <meta charset="UTF-8">
         <link type="Image/x-icon" href="/images/favicon.jpg" rel="icon">
         <title>Администратор</title>
-        <link rel="stylesheet" href="/style/style_admin.css" type="text/css">
+        <!--<link rel="stylesheet" href="/style/style_admin_theme_main.css" type="text/css">-->
+        <?php
+        if (isset($_SESSION['theme'])) {
+            print '<link rel="stylesheet" href="/style/style_admin_theme_' . $_SESSION['theme'] . '.css" type="text/css">';
+            ?>
+            <link rel="stylesheet" href="/style/style_admin_theme_<?= $_SESSION['theme'] ?>.css" type="text/css">
+            <?php
+        } else {
+//            print '<link rel="stylesheet" href="/style/style_main_theme_white.css" type="text/css">';
+            print '<link rel="stylesheet" href="/style/style_admin_theme_main.css" type="text/css">';
+        }
+        ?>
     </head>
     <body>
         <div class="body_wrap">
@@ -25,6 +36,17 @@ setcookie("name", $cookieNameClient, time() + 60 * 60 * 24 * 60);
             <h2 class="chat_welcome">ДОБРО ПОЖАЛОВАТЬ В ЧАТ АДМИНИСТРАТОР!!!</h2>  
 
             <div class="sticky"><a class="registr_author" href="exit_admin.php">Выйти из режима Администратора</a></div>
+
+            <div class="theme"><?php
+                if (isset($_SESSION['theme']) and $_SESSION['theme'] === 'black') {
+                    print '<a class="registr_author" href="style_theme_change.php?type=white">Белая тема</a>';
+                } elseif (isset($_SESSION['theme']) and $_SESSION['theme'] === 'white') {
+                    print '<a class="registr_author" href="style_theme_change.php?type=main">Главная тема</a>';
+                } else {
+                    print '<a class="registr_author" href="style_theme_change.php?type=black">Черная тема</a>';
+                }
+                ?>
+            </div>
 
             <?php
             //Выводим комментарии
