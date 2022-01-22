@@ -1,8 +1,8 @@
 <?php
-//session_start();
-//if (!$_SESSION['userExist']) {
-//    header("Location: /index.php");
-//}
+session_start();
+if (!$_SESSION['userExist']) {
+    header("Location: /index.php");
+}
 error_reporting(0xffff);
 //Подключаемся к базе данных 
 include "db_connect.php";
@@ -50,12 +50,8 @@ include "client_request_process.php";
             <div class="form">
                 <p class="agitation_user">Оставьте ваш след в истории человечества!</p>
                 <form action="<?php echo htmlentities($_SERVER["PHP_SELF"]); ?>" method="post" >
-                    <!--Имя:--><div class="print_user_name">Ползователь: <span class="user_name"><?php echo $_SESSION['userName']; ?></span></div>
-<!--                    <span class="error">* <?php
-                        if ($nameErr !== true) {
-                            echo $nameErr;
-                        }
-                        ?></span><br><br>-->
+                    <div class="print_user_name">Ползователь: <span class="user_name"><?php echo $_SESSION['userName']; ?></span></div>
+                    <input type="hidden" name="name" value="<?php echo $_SESSION['userName']; ?>" >
                     <textarea type="Text" name="text" rows="10" cols="70" placeholder="Ваш комментарий" minlength="10" maxlength="750"><?php echo $savedText; ?></textarea>
                     <span class="error">* <?php
                         if ($textErr !== true) {

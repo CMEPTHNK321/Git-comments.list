@@ -1,13 +1,13 @@
 /*Задаем стиль body*/
 body {
-    background-color: lightblue;
-    background-image: url("/images/fon.jpg");
-    background-attachment: fixed;
+    background-color: #ffffff;
+    /*background-image: url("/images/fon.jpg");*/
+/*    background-attachment: fixed;
     background-position-x: right;
     background-repeat: no-repeat;
     background-size: cover;
     font-size: 100%;
-    margin: 0;
+    margin: 0;*/
 }
 
 

@@ -71,6 +71,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($errFlag === true) {
         $cookieNameClient = $name;
     }
+    
+//    if (isset($_SESSION['userName'])) {
+//        $name = $_SESSION['userName'];
+//    }
 
     //РАБОТАЕМ С ПЕРЕМЕННОЙ $text
     //Проверяем, существуют ли  данные для переменной $text
@@ -92,7 +96,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $errFlag = false;
         $textErr = "Длина комментария должна быть менее 750ти символов";
     }
-
 
 
     if ($errFlag == true) {

@@ -1,12 +1,12 @@
 <?php
 session_start();
-//if ($_SESSION['adminExist']) {
-//    header("Location: /main_administrator.php");
-//}
-//if ($_SESSION['userExist']) {
-//    header("Location: /main_user.php");
-//}
-//include "authorization_process.php";
+if ($_SESSION['adminExist']) {
+    header("Location: /main_administrator.php");
+}
+if ($_SESSION['userExist']) {
+    header("Location: /main_user.php");
+}
+include "authorization_process.php";
 ?>
 <html>
     <head>
@@ -39,7 +39,7 @@ session_start();
                         ?></span>
                 </div>
                 <button type="submit">Войти в свой аккаунт</button>
-               <p class="button_authorization_place"><span class="button_autorization">У вас нет аккаунта?</span><a href="main_registration.php">ЗАРЕГЕСТРИРУЙТЕСЬ!</a></p>
+                <p class="button_authorization_place"><span class="button_autorization">У вас нет аккаунта?</span><a href="main_registration.php">ЗАРЕГЕСТРИРУЙТЕСЬ!</a></p>
                 <?php
                 if (isset($_SESSION['registr_message'])) {
                     echo "<p class = 'reg_mes'>" . $_SESSION['registr_message'] . "</p>";

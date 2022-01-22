@@ -1,11 +1,11 @@
 <?php
 session_start();
-//if ($_SESSION['adminExist']) {
-//    header("Location: /main_administrator.php");
-//}
-//if ($_SESSION['userExist']) {
-//    header("Location: /main_user.php");
-//}
+if ($_SESSION['adminExist']) {
+    header("Location: /main_administrator.php");
+}
+if ($_SESSION['userExist']) {
+    header("Location: /main_user.php");
+}
 error_reporting(0xffff);
 //Подключаемся к базе данных 
 include "db_connect.php";
@@ -21,6 +21,17 @@ setcookie("name", $cookieNameClient, time() + 60 * 60 * 24 * 60);
         <link type="Image/x-icon" href="/images/favicon.jpg" rel="icon">
         <title>Лист Комментариев</title>
         <link rel="stylesheet" href="/style/style_main.css" type="text/css">
+        <?php
+        if (isset($_SESSION['theme'])) {
+            print '<link rel="stylesheet" href="/style/style_main_theme_' . $_SESSION['theme'] . '.css" type="text/css">';
+            ?>
+            <link rel="stylesheet" href="/style/style_main_theme_<?= $_SESSION['theme'] ?>.css" type="text/css">
+            <?php
+        }
+//        else {
+//            print '<link rel="stylesheet" href="/style/style_main_theme_white.css" type="text/css">';
+//        }
+        ?>
     </head>
     <body>
         <div class="body_wrap">
@@ -29,13 +40,22 @@ setcookie("name", $cookieNameClient, time() + 60 * 60 * 24 * 60);
 
             <div class="sticky"><a class="registr_author" href="main_authorization.php">Авторизация и регистрация</a></div>
 
+            <div class="theme"><?php
+        if (isset($_SESSION['theme']) and $_SESSION['theme'] === 'black') {
+            print '<a class="registr_author" href="style_theme_change.php?type=white">Белая тема</a>';
+        } else {
+            print '<a class="registr_author" href="style_theme_change.php?type=black">Чёрная тема</a>';
+        }
+        ?>
+            </div>
+
             <!--            <?php
 //// Выводим сообщение установлено ли соединение с сервером БД или нет
 //           echo $sbdConnect;
 //
 ////Выводим сообщение установлено ли соединение с БД или нет
 //           echo $bdConnect
-            ?>  -->
+        ?>  -->
 
             <?php
             //Выводим комментарии
@@ -55,16 +75,16 @@ setcookie("name", $cookieNameClient, time() + 60 * 60 * 24 * 60);
                 <form action="<?php echo htmlentities($_SERVER["PHP_SELF"]); ?>" method="post" >
                     Имя:<input type="Text" name="name" size="20" placeholder="Ваше имя" minlength="5" maxlength="30" value="<?php echo $savedName; ?>" > 
                     <span class="error">* <?php
-                        if ($nameErr !== true) {
-                            echo $nameErr;
-                        }
-                        ?></span><br><br>
+            if ($nameErr !== true) {
+                echo $nameErr;
+            }
+            ?></span><br><br>
                     <textarea type="Text" name="text" rows="10" cols="70" placeholder="Ваш комментарий" minlength="10" maxlength="750"><?php echo $savedText; ?></textarea>
                     <span class="error">* <?php
                         if ($textErr !== true) {
                             echo $textErr;
                         }
-                        ?></span><br><br>
+            ?></span><br><br>
                     <input type="Submit" value="Отправить!">
                 </form>
             </div>

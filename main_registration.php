@@ -1,11 +1,11 @@
 <?php
 session_start();
-//if ($_SESSION['adminExist']) {
-//    header("Location: /main_administrator.php");
-//}
-//if ($_SESSION['userExist']) {
-//    header("Location: /main_user.php");
-//}
+if ($_SESSION['adminExist']) {
+    header("Location: /main_administrator.php");
+}
+if ($_SESSION['userExist']) {
+    header("Location: /main_user.php");
+}
 setcookie("name_reg", $cookieNameClientReg, time() + 60 * 60 * 24 * 60);
 include "registration_process.php";
 ?>
