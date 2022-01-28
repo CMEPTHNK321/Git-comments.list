@@ -1,0 +1,106 @@
+/*Задаем стиль body*/
+body {
+    background-color: #ffffff;
+}
+
+/*Задаем стиль для <div> в <body>*/
+.body_wrap {
+    width: 70%;
+    margin: auto;
+    padding: 15px;
+    background: inherit;
+    position: relative;
+}
+
+.chat_welcome {
+    text-align: center;
+    color: black;
+    border: 3px solid green;
+    border-radius: 12px;
+    width: 46%;
+    margin: auto;
+    overflow: auto;
+    background-color: #d8f800;
+}
+
+.sticky {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 5px;
+    z-index: 69;
+}
+
+.registr_author {
+    /*position: relative;*/
+    text-align: center;
+    border: 2px solid red;
+    border-radius: 12px;
+    background-color: #9BED00; 
+    width: 20%;
+    padding: 15px;
+    color: #160773;
+    text-decoration: none;
+    display:inline-block;
+    margin-bottom: 10px;
+}
+
+.distribution {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 5px;
+    z-index: 69;
+    margin-left: 570px;
+}
+
+.right{
+    text-align: center;
+    border: 2px solid red;
+    border-radius: 12px;
+    background-color: #9BED00; 
+    width: 27%;
+    padding: 15px;
+    color: #160773;
+    text-decoration: none;
+    display:inline-block;
+    margin-bottom: 10px; 
+    white-space: nowrap;
+}
+
+.form{
+    width: 100%;
+    padding: 10px;
+    opacity: 1;
+    z-index:99;
+    /*background-color: #96bb72;*/
+    border-radius: 12px;
+    border: 1px solid red;
+    position: relative;
+}
+
+.useless {
+    float: left;
+    width:50%;
+}
+
+.user {
+    background-color: lightblue;
+    padding: 3px;
+    border-radius: 3px;
+}
+
+.stat {
+    background-color: lightblue;
+    padding: 3px;
+    border-radius: 3px;
+}
+
+.status {
+    /*position: absolute;*/
+    margin-left: 5px;
+}
+
+.change {
+    float: right;
+    margin-right: 5px;
+}
+

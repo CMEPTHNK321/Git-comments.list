@@ -66,6 +66,28 @@ body {
     margin-bottom: 10px;
 }
 
+.distribution {
+     position: -webkit-sticky;
+    position: sticky;
+    top: 5px;
+    z-index: 69;
+    margin-left: 570px;
+}
+
+.right{
+    text-align: center;
+    border: 2px solid red;
+    border-radius: 12px;
+    background-color: #9BED00; 
+    width: 27%;
+    padding: 15px;
+    color: #160773;
+    text-decoration: none;
+    display:inline-block;
+    margin-bottom: 10px; 
+    white-space: nowrap;
+}
+
 /*Задаем стиль ошибки при вводе имени и текста пользователем*/
 .error {
     color: #ff0000;

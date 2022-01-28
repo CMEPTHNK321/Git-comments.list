@@ -5,7 +5,6 @@ include "db_connect.php";
 if (isset($_POST["delete_multiple_messages"])) {
     $idActive = $_POST["that"];
 
-
     foreach ($idActive as $deleteMessageValue) {
         
 //        $justDelete = $deleteMessageId;

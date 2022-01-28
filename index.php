@@ -1,10 +1,16 @@
 <?php
 session_start();
-if ($_SESSION['adminExist']) {
+
+//Проводим проверку на существование сессиии и перенаправляем на соответствующую страницу!
+//include_once "session_exist.php";
+if ($_SESSION['userGroup'] == 'admin') {
     header("Location: /main_administrator.php");
 }
-if ($_SESSION['userExist']) {
+if ($_SESSION['userGroup'] == 'user') {
     header("Location: /main_user.php");
+}
+if ($_SESSION['userGroup'] == 'moder') {
+    header("Location: /main_moderator.php");
 }
 error_reporting(0xffff);
 //Подключаемся к базе данных 
@@ -46,7 +52,7 @@ setcookie("name", $cookieNameClient, time() + 60 * 60 * 24 * 60);
                 } elseif (isset($_SESSION['theme']) and $_SESSION['theme'] === 'white') {
                     print '<a class="registr_author" href="style_theme_change.php?type=main">Главная тема</a>';
                 } else {
-                   print '<a class="registr_author" href="style_theme_change.php?type=black">Черная тема</a>'; 
+                    print '<a class="registr_author" href="style_theme_change.php?type=black">Черная тема</a>';
                 }
                 ?>
             </div>

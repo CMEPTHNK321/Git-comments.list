@@ -1,11 +1,19 @@
 <?php
 session_start();
-if ($_SESSION['adminExist']) {
-    header("Location: /main_administrator.php");
+
+//Проводим проверку на существование сессиии и перенаправляем на соответствующую страницу!
+//include "session_exist.php";
+
+if ($_SESSION['userGroup']) {
+    header("Location: /index.php");
 }
-if ($_SESSION['userExist']) {
-    header("Location: /main_user.php");
-}
+//if ($_SESSION['userGroup'] == 'user') {
+//    header("Location: /main_user.php");
+//}
+//if ($_SESSION['userGroup'] == 'moder') {
+//    header("Location: /main_moderator.php");
+//}
+
 setcookie("name_reg", $cookieNameClientReg, time() + 60 * 60 * 24 * 60);
 include "registration_process.php";
 ?>

@@ -1,6 +1,10 @@
 <?php
 session_start();
-if (!$_SESSION['adminExist']) {
+
+//Проводим проверку на существование сессиии и перенаправляем на соответствующую страницу!
+//include "session_exist.php";
+
+if (!$_SESSION['userGroup'] == 'admin') {
     header("Location: /index.php");
 }
 error_reporting(0xffff);
@@ -35,7 +39,7 @@ setcookie("name", $cookieNameClient, time() + 60 * 60 * 24 * 60);
 
             <h2 class="chat_welcome">ДОБРО ПОЖАЛОВАТЬ В ЧАТ АДМИНИСТРАТОР!!!</h2>  
 
-            <div class="sticky"><a class="registr_author" href="exit_admin.php">Выйти из режима Администратора</a></div>
+            <div class="sticky"><a class="registr_author" href="exit.php">Выйти из режима Администратора</a></div>
 
             <div class="theme"><?php
                 if (isset($_SESSION['theme']) and $_SESSION['theme'] === 'black') {
@@ -48,6 +52,8 @@ setcookie("name", $cookieNameClient, time() + 60 * 60 * 24 * 60);
                 ?>
             </div>
 
+            <div class="distribution"><a class="right" href="distribution.php">Изменение прав пользователей</a></div>
+            
             <?php
             //Выводим комментарии
             include "admin_comments_output.php";

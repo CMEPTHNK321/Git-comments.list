@@ -1,6 +1,10 @@
 <?php
 session_start();
-if (!$_SESSION['userGroup'] == 'user') {
+
+//Проводим проверку на существование сессиии и перенаправляем на соответствующую страницу!
+//include "session_exist.php";
+
+if (!$_SESSION['userGroup'] == 'moder') {
     header("Location: /index.php");
 }
 error_reporting(0xffff);
@@ -20,30 +24,30 @@ include "client_request_process.php";
          <!--<link rel="stylesheet" href="/style/style_main_theme_main.css" type="text/css">-->
         <?php
         if (isset($_SESSION['theme'])) {
-            print '<link rel="stylesheet" href="/style/style_main_theme_' . $_SESSION['theme'] . '.css" type="text/css">';
+//            print '<link rel="stylesheet" href="/style/style_moder_theme_' . $_SESSION['theme'] . '.css" type="text/css">';
             ?>
-            <link rel="stylesheet" href="/style/style_main_theme_<?= $_SESSION['theme'] ?>.css" type="text/css">
+            <link rel="stylesheet" href="/style/style_moder_theme_<?= $_SESSION['theme'] ?>.css" type="text/css">
             <?php
         } else {
 //            print '<link rel="stylesheet" href="/style/style_main_theme_white.css" type="text/css">';
-            print '<link rel="stylesheet" href="/style/style_main_theme_main.css" type="text/css">';
+            print '<link rel="stylesheet" href="/style/style_moder_theme_main.css" type="text/css">';
         }
         ?>
     </head>
     <body>
         <div class="body_wrap">
 
-            <h2 class="chat_welcome">ДОБРО ПОЖАЛОВАТЬ В ЧАТ<span class="welcome_user"><?= $_SESSION['userName'] ?></span>!!!</h2> 
+            <h2 class="chat_welcome">ДОБРО ПОЖАЛОВАТЬ В ЧАТ <span class="welcome_user"><?= $_SESSION['userName'] ?></span>!!!</h2> 
 
-            <div class="sticky_user"><a class="registr_user" href="exit.php">Выйти из аккаунта</a></div>
+            <div class="sticky"><a class="registr" href="exit.php">Выйти из аккаунта</a></div>
             
             <div class="theme"><?php
                 if (isset($_SESSION['theme']) and $_SESSION['theme'] === 'black') {
-                    print '<a class="registr_user" href="style_theme_change.php?type=white">Белая тема</a>';
+                    print '<a class="registr" href="style_theme_change.php?type=white">Белая тема</a>';
                 } elseif (isset($_SESSION['theme']) and $_SESSION['theme'] === 'white') {
-                    print '<a class="registr_user" href="style_theme_change.php?type=main">Главная тема</a>';
+                    print '<a class="registr" href="style_theme_change.php?type=main">Главная тема</a>';
                 } else {
-                   print '<a class="registr_user" href="style_theme_change.php?type=black">Черная тема</a>'; 
+                   print '<a class="registr" href="style_theme_change.php?type=black">Черная тема</a>'; 
                 }
                 ?>
             </div>
@@ -58,7 +62,7 @@ include "client_request_process.php";
 
             <?php
             //Выводим комментарии
-            include "comments_output.php";
+            include "moderator_comments_output.php";
             ?>
 
             <?php

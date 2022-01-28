@@ -1,45 +1,41 @@
 /*Задаем стиль body*/
 body {
-    background-color: #000000;
-    /*background-image: url("/images/fon.jpg");*/
-/*    background-attachment: fixed;
+    background-color: lightblue;
+    background-image: url("/images/fon.jpg");
+    background-attachment: fixed;
     background-position-x: right;
     background-repeat: no-repeat;
     background-size: cover;
     font-size: 100%;
-    margin: 0;*/
+    margin: 0;
+    /*position: relative;*/
 }
-
 
 /*Задаем стиль для <div> в <body>*/
 .body_wrap {
-    position:relative;
     width: 70%;
     margin: auto;
     padding: 15px;
     background: inherit;
+    position: relative;
 }
 
 .chat_welcome {
     text-align: center;
-    color: white;
+    color: black;
     border: 3px solid green;
     border-radius: 12px;
-    width: 45%;
+    width: 46%;
     margin: auto;
     overflow: auto;
-    background-color: #00cc00;
+    background-color: #d8f800;
 }
 
-.welcome_user {
-    font-family: New Century Schoolbook, TeX Gyre Schola, serif;
-    color: black;
-    background-color: #f7fe72;
-    margin-right: 3px;
-    margin-left: 3px;
-    border-radius: 8px;
-    padding: 3px;
-}
+/*.nechto {
+    float: left;
+    width: 23.5%;
+    margin-right: 2%;
+}*/
 
 .sticky {
     position: -webkit-sticky;
@@ -47,6 +43,7 @@ body {
     top: 5px;
     z-index: 69;
 }
+
 .theme {
     position: -webkit-sticky;
     position: sticky;
@@ -55,35 +52,12 @@ body {
     margin-left: 320px;
 }
 
-.sticky_user {
-    position: -webkit-sticky;
-    position: sticky;
-    top: 5px;
-    z-index: 69;
-}
-
-.registr_author {
+.registr {
     /*position: relative;*/
     text-align: center;
     border: 2px solid red;
     border-radius: 12px;
-    background-color: #ff7c00; 
-    width: 20%;
-    padding: 15px;
-    color: black;
-    text-decoration: none;
-    display:inline-block;
-    margin-bottom: 10px;
-    /*    position: -webkit-sticky;
-        position: sticky;*/
-}
-
-.registr_user {
-    /*position: relative;*/
-    text-align: center;
-    border: 2px solid red;
-    border-radius: 12px;
-    background-color: #ffdb00; 
+    background-color: #9BED00; 
     width: 20%;
     padding: 15px;
     color: #160773;
@@ -98,13 +72,13 @@ body {
 }
 
 /*Обертываем весь вывод одного полного комментария*/
-.one_single_comment {
+.all_comment {
     position: relative;
     width: 100%;
-    margin: 15px 0;
-    z-index: 59;
-    margin-bottom: 350px;
+    margin: 15px 0 0 0;
+    z-index:59;
     background: inherit;
+    margin-bottom: 350px;
 }
 
 /*Обертываем время  и пользрвателя*/
@@ -124,6 +98,11 @@ body {
     font-family: "Times New Roman", Times, serif;
     font-style: italic;
     margin-left: 5px;
+}
+
+.delete_button {
+    margin-right: 50px;
+    float: right;
 }
 
 /*Задаем стиль вывода времени*/
@@ -177,8 +156,9 @@ body {
     /*margin-top: 220px;*/
 }
 
-.agitation_user {
-    width: 20%;
+.agitation_admin{
+    width: 27%;
+    text-align: center;
     font-size: 20px;
     margin-left: 3%;
     margin-top: 15px;
@@ -186,34 +166,13 @@ body {
     padding: 5px;
     border: 2px solid red;
     border-radius: 8px;
-    background-color: #ff7c00;
-
+    background-color: #ff8100;
 }
 
-.agitation_main {
-    width: 13%;
-    font-size: 20px;
-    margin-left: 3%;
-    margin-top: 15px;
-    margin-bottom: 10px;
-    padding: 5px;
-    border: 2px solid red;
-    border-radius: 8px;
-    background-color: #ff7c00;
-
-}
-
-.print_user_name {
-    /*   font-family: Andale Mono, monospace;*/
-    /*font-size: 15px;*/
-    font-weight: bold;
-    margin-bottom: 5px;
-}
-
-.user_name {
-    font-family: New Century Schoolbook, TeX Gyre Schola, serif;
-    font-size: 20px;
-    background-color: #f7fe72; 
-    padding: 5px;
-    border-radius: 8px;
-}
+/*.delete_button {
+    position: fixed;
+    top: 0;
+    right:30%;
+    width: 50px;
+    height:15px;
+}*/

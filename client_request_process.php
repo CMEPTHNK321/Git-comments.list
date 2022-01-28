@@ -1,4 +1,5 @@
 <?php
+
 //session_start();
 //СОЗДАЕМ ПЕРЕМЕННЫЕ КОТОРЫЕ МОГУТ ПОНАДОБИТСЯ
 //Создаем переменную значения $valueCookie для куки
@@ -30,10 +31,17 @@ $admin = "Administrator";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
+
     //РАБОТАЕМ С ПЕРЕМЕННОЙ $name
     //Проверяем, существуют ли  данные для переменной $name 
     //Если существуют, то создаем переменную $name и экранируем её 
-    $name = isset($_POST["name"]) ? htmlentities($_POST["name"]) : '';
+
+    if (isset($_SESSION['userName'])) {
+        $name = $_SESSION['userName'];
+    } else {
+
+        $name = isset($_POST["name"]) ? htmlentities($_POST["name"]) : '';
+    }
 
     //Если в поле ввода имени чтото появилось, мы хоти чтоб это оставалось и дальше,
     //поетому присваиваем переменной $savedName новое значение введенное в поле имени, даже если оно не соответсвует требованиям
@@ -71,11 +79,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($errFlag === true) {
         $cookieNameClient = $name;
     }
-    
+
 //    if (isset($_SESSION['userName'])) {
 //        $name = $_SESSION['userName'];
 //    }
-
     //РАБОТАЕМ С ПЕРЕМЕННОЙ $text
     //Проверяем, существуют ли  данные для переменной $text
     //Если существуют, то создаем переменную $text и экранируем её 

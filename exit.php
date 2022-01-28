@@ -1,4 +1,4 @@
 <?php
 session_start();
-unset($_SESSION['adminExist']);
+unset($_SESSION['userGroup']);
 header("Location: /index.php");
